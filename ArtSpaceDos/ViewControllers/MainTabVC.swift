@@ -22,14 +22,6 @@ class MainTabVC: UITabBarController {
       setTabItems()
         // Do any additional setup after loading the view.
     }
-    
-  override func viewWillAppear(_ animated: Bool) {
-     self.navigationController?.navigationBar.isHidden = true
-   }
-   
-   override func viewWillDisappear(_ animated: Bool) {
-     self.navigationController?.navigationBar.isHidden = false
-   }
   
   private func setTabItems() {
     homePage.tabBarItem = UITabBarItem(title: "Main", image: UIImage(systemName: "house"), tag: 0)
