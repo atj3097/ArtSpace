@@ -3,31 +3,91 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6CC7ADAFABF30C52B2FAFCA8 /* Pods_ArtSpaceDos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE1012DF3EA2C67857EE2ED /* Pods_ArtSpaceDos.framework */; };
+		7DDA6DC05FA73343E6BA89BD /* Pods_ArtSpaceDos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C25476F3F868E50797CF2B5 /* Pods_ArtSpaceDos.framework */; };
+		CB00A3C024293E7000F42467 /* StripeKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00A3BF24293E7000F42467 /* StripeKeys.swift */; };
+		CB0D6FAA23FC55A20082178A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0D6FA923FC55A20082178A /* LoginViewController.swift */; };
+		CB0D6FAE23FC55EA0082178A /* GifExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0D6FAD23FC55EA0082178A /* GifExtension.swift */; };
+		CB18ADE62416CCDA00A8745A /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB18ADE52416CCDA00A8745A /* FilterButton.swift */; };
+		CB39CA072423D85A00F87E7E /* SaveCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA062423D85A00F87E7E /* SaveCardViewController.swift */; };
+		CB39CA0D2423F95B00F87E7E /* StripeAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA0C2423F95B00F87E7E /* StripeAPIClient.swift */; };
+		CB39CA0F24241C8300F87E7E /* PaymentOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA0E24241C8300F87E7E /* PaymentOptionsViewController.swift */; };
+		CB39CA1124241CC300F87E7E /* ShippingAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA1024241CC300F87E7E /* ShippingAddressViewController.swift */; };
+		CB39CA1324241E3400F87E7E /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA1224241E3400F87E7E /* CheckoutViewController.swift */; };
+		CBA886A423EDF40100E45D49 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA886A323EDF40100E45D49 /* FilterViewController.swift */; };
+		CBBEC33B23F5A13800A83FD7 /* Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBEC33A23F5A13800A83FD7 /* Delegates.swift */; };
+		D80E04CF23ECAA2200352C3E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80E04CE23ECAA2200352C3E /* ProfileViewController.swift */; };
+		D80E04D123ECAA3900352C3E /* PurchaseHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80E04D023ECAA3900352C3E /* PurchaseHistoryViewController.swift */; };
+		D80E04D323ECAA4C00352C3E /* SavedArtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80E04D223ECAA4C00352C3E /* SavedArtViewController.swift */; };
+		D80E04D523ECAAEC00352C3E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80E04D423ECAAEC00352C3E /* MainTabBarController.swift */; };
 		D82FA88223E33697005B22D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA88123E33697005B22D4 /* AppDelegate.swift */; };
 		D82FA88423E33697005B22D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA88323E33697005B22D4 /* SceneDelegate.swift */; };
-		D82FA88623E33697005B22D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA88523E33697005B22D4 /* ViewController.swift */; };
 		D82FA88923E33697005B22D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D82FA88723E33697005B22D4 /* Main.storyboard */; };
 		D82FA88B23E3369A005B22D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D82FA88A23E3369A005B22D4 /* Assets.xcassets */; };
 		D82FA88E23E3369A005B22D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D82FA88C23E3369A005B22D4 /* LaunchScreen.storyboard */; };
+		D82FA89923E33BED005B22D4 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA89823E33BED005B22D4 /* AppUser.swift */; };
+		D82FA89B23E33C12005B22D4 /* ArtObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA89A23E33C12005B22D4 /* ArtObject.swift */; };
+		D82FA8A123E33C84005B22D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA8A023E33C84005B22D4 /* MainViewController.swift */; };
+		D82FA8A323E33C9E005B22D4 /* ArtDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA8A223E33C9E005B22D4 /* ArtDetailViewController.swift */; };
+		D82FA8A523E33CB1005B22D4 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA8A423E33CB1005B22D4 /* CreatePostViewController.swift */; };
+		D82FA8A823E33D1F005B22D4 /* ArtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA8A723E33D1F005B22D4 /* ArtCell.swift */; };
+		D82FA8AB23E33E49005B22D4 /* String+Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA8AA23E33E49005B22D4 /* String+Validations.swift */; };
+		D82FA8B023E33EBD005B22D4 /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA8AF23E33EBD005B22D4 /* FirebaseAuth.swift */; };
+		D82FA8B223E33ED3005B22D4 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA8B123E33ED3005B22D4 /* FirestoreService.swift */; };
+		D82FA8B423E346B6005B22D4 /* UIUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA8B323E346B6005B22D4 /* UIUtilities.swift */; };
+		D854837E23E385D300811E6B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D854837D23E385D300811E6B /* GoogleService-Info.plist */; };
+		D886C88723FDA15E002FA690 /* SavedArtCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D886C88623FDA15E002FA690 /* SavedArtCollectionViewCell.swift */; };
+		FC1616FD23E8B45D00289C74 /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1616FC23E8B45D00289C74 /* FirebaseStorageService.swift */; };
+		FC1616FF23ECA03900289C74 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1616FE23ECA03900289C74 /* ARViewController.swift */; };
+		FC16170323FC8C6900289C74 /* ReuseIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC16170223FC8C6900289C74 /* ReuseIdentifiers.swift */; };
+		FC6D4D482416C48B00D5FB66 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6D4D472416C48A00D5FB66 /* UIViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0E40CA08D5E200C85CD7AE45 /* Pods-ArtSpaceDos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtSpaceDos.release.xcconfig"; path = "Target Support Files/Pods-ArtSpaceDos/Pods-ArtSpaceDos.release.xcconfig"; sourceTree = "<group>"; };
-		A7E28B1BF34ABBC63718BE6C /* Pods-ArtSpaceDos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtSpaceDos.debug.xcconfig"; path = "Target Support Files/Pods-ArtSpaceDos/Pods-ArtSpaceDos.debug.xcconfig"; sourceTree = "<group>"; };
+		1F4C1F7545B4ED3F5B3C9619 /* Pods-ArtSpaceDos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtSpaceDos.release.xcconfig"; path = "Target Support Files/Pods-ArtSpaceDos/Pods-ArtSpaceDos.release.xcconfig"; sourceTree = "<group>"; };
+		7C25476F3F868E50797CF2B5 /* Pods_ArtSpaceDos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtSpaceDos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EF2FABBA27444C92A5C1D0D /* Pods-ArtSpaceDos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtSpaceDos.debug.xcconfig"; path = "Target Support Files/Pods-ArtSpaceDos/Pods-ArtSpaceDos.debug.xcconfig"; sourceTree = "<group>"; };
+		CB00A3BF24293E7000F42467 /* StripeKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeKeys.swift; sourceTree = "<group>"; };
+		CB0D6FA923FC55A20082178A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CB0D6FAD23FC55EA0082178A /* GifExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifExtension.swift; sourceTree = "<group>"; };
+		CB18ADE52416CCDA00A8745A /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
+		CB39CA062423D85A00F87E7E /* SaveCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCardViewController.swift; sourceTree = "<group>"; };
+		CB39CA0C2423F95B00F87E7E /* StripeAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeAPIClient.swift; sourceTree = "<group>"; };
+		CB39CA0E24241C8300F87E7E /* PaymentOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptionsViewController.swift; sourceTree = "<group>"; };
+		CB39CA1024241CC300F87E7E /* ShippingAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingAddressViewController.swift; sourceTree = "<group>"; };
+		CB39CA1224241E3400F87E7E /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		CBA886A323EDF40100E45D49 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		CBBEC33A23F5A13800A83FD7 /* Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegates.swift; sourceTree = "<group>"; };
+		D80E04CE23ECAA2200352C3E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D80E04D023ECAA3900352C3E /* PurchaseHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryViewController.swift; sourceTree = "<group>"; };
+		D80E04D223ECAA4C00352C3E /* SavedArtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArtViewController.swift; sourceTree = "<group>"; };
+		D80E04D423ECAAEC00352C3E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		D82FA87E23E33697005B22D4 /* ArtSpaceDos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtSpaceDos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D82FA88123E33697005B22D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D82FA88323E33697005B22D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D82FA88523E33697005B22D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D82FA88823E33697005B22D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D82FA88A23E3369A005B22D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D82FA88D23E3369A005B22D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D82FA88F23E3369A005B22D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ECE1012DF3EA2C67857EE2ED /* Pods_ArtSpaceDos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtSpaceDos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D82FA89823E33BED005B22D4 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		D82FA89A23E33C12005B22D4 /* ArtObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtObject.swift; sourceTree = "<group>"; };
+		D82FA8A023E33C84005B22D4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D82FA8A223E33C9E005B22D4 /* ArtDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDetailViewController.swift; sourceTree = "<group>"; };
+		D82FA8A423E33CB1005B22D4 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		D82FA8A723E33D1F005B22D4 /* ArtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtCell.swift; sourceTree = "<group>"; };
+		D82FA8AA23E33E49005B22D4 /* String+Validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validations.swift"; sourceTree = "<group>"; };
+		D82FA8AF23E33EBD005B22D4 /* FirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
+		D82FA8B123E33ED3005B22D4 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		D82FA8B323E346B6005B22D4 /* UIUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtilities.swift; sourceTree = "<group>"; };
+		D854837D23E385D300811E6B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D886C88623FDA15E002FA690 /* SavedArtCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArtCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC1616FC23E8B45D00289C74 /* FirebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageService.swift; sourceTree = "<group>"; };
+		FC1616FE23ECA03900289C74 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
+		FC16170223FC8C6900289C74 /* ReuseIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiers.swift; sourceTree = "<group>"; };
+		FC6D4D472416C48A00D5FB66 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,29 +95,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CC7ADAFABF30C52B2FAFCA8 /* Pods_ArtSpaceDos.framework in Frameworks */,
+				7DDA6DC05FA73343E6BA89BD /* Pods_ArtSpaceDos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		33ECC2CC31A56F38D4FC9CA3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				ECE1012DF3EA2C67857EE2ED /* Pods_ArtSpaceDos.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		6C801646FBAE48EAE621CBD4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A7E28B1BF34ABBC63718BE6C /* Pods-ArtSpaceDos.debug.xcconfig */,
-				0E40CA08D5E200C85CD7AE45 /* Pods-ArtSpaceDos.release.xcconfig */,
+				9EF2FABBA27444C92A5C1D0D /* Pods-ArtSpaceDos.debug.xcconfig */,
+				1F4C1F7545B4ED3F5B3C9619 /* Pods-ArtSpaceDos.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CB0D6FA823FC558B0082178A /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				CB0D6FA923FC55A20082178A /* LoginViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		CB39CA032423D6C500F87E7E /* StripeHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				CB39CA062423D85A00F87E7E /* SaveCardViewController.swift */,
+				CB39CA0C2423F95B00F87E7E /* StripeAPIClient.swift */,
+				CB39CA0E24241C8300F87E7E /* PaymentOptionsViewController.swift */,
+				CB39CA1024241CC300F87E7E /* ShippingAddressViewController.swift */,
+				CB39CA1224241E3400F87E7E /* CheckoutViewController.swift */,
+				CB00A3BF24293E7000F42467 /* StripeKeys.swift */,
+			);
+			path = StripeHelpers;
 			sourceTree = "<group>";
 		};
 		D82FA87523E33697005B22D4 = {
@@ -66,7 +138,7 @@
 				D82FA88023E33697005B22D4 /* ArtSpaceDos */,
 				D82FA87F23E33697005B22D4 /* Products */,
 				6C801646FBAE48EAE621CBD4 /* Pods */,
-				33ECC2CC31A56F38D4FC9CA3 /* Frameworks */,
+				D972D1201EFBDF95CF045E70 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,15 +153,104 @@
 		D82FA88023E33697005B22D4 /* ArtSpaceDos */ = {
 			isa = PBXGroup;
 			children = (
+				D82FA89723E33BCE005B22D4 /* Models */,
+				D82FA89E23E33C41005B22D4 /* ViewControllers */,
+				D82FA8AC23E33E61005B22D4 /* FirebaseHelpers */,
+				D82FA8A623E33CBF005B22D4 /* SupportingFiles */,
+				D82FA8B523E34A4C005B22D4 /* Utilities */,
 				D82FA88123E33697005B22D4 /* AppDelegate.swift */,
 				D82FA88323E33697005B22D4 /* SceneDelegate.swift */,
-				D82FA88523E33697005B22D4 /* ViewController.swift */,
-				D82FA88723E33697005B22D4 /* Main.storyboard */,
-				D82FA88A23E3369A005B22D4 /* Assets.xcassets */,
-				D82FA88C23E3369A005B22D4 /* LaunchScreen.storyboard */,
 				D82FA88F23E3369A005B22D4 /* Info.plist */,
+				D854837D23E385D300811E6B /* GoogleService-Info.plist */,
 			);
 			path = ArtSpaceDos;
+			sourceTree = "<group>";
+		};
+		D82FA89723E33BCE005B22D4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D82FA89823E33BED005B22D4 /* AppUser.swift */,
+				D82FA89A23E33C12005B22D4 /* ArtObject.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D82FA89E23E33C41005B22D4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CB39CA032423D6C500F87E7E /* StripeHelpers */,
+				CB0D6FA823FC558B0082178A /* Authentication */,
+				D82FA89F23E33C4B005B22D4 /* Cell */,
+				D82FA8A023E33C84005B22D4 /* MainViewController.swift */,
+				D80E04D423ECAAEC00352C3E /* MainTabBarController.swift */,
+				D82FA8A223E33C9E005B22D4 /* ArtDetailViewController.swift */,
+				D82FA8A423E33CB1005B22D4 /* CreatePostViewController.swift */,
+				FC1616FE23ECA03900289C74 /* ARViewController.swift */,
+				D80E04CE23ECAA2200352C3E /* ProfileViewController.swift */,
+				D80E04D023ECAA3900352C3E /* PurchaseHistoryViewController.swift */,
+				D80E04D223ECAA4C00352C3E /* SavedArtViewController.swift */,
+				CBA886A323EDF40100E45D49 /* FilterViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D82FA89F23E33C4B005B22D4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D82FA8A723E33D1F005B22D4 /* ArtCell.swift */,
+				D886C88623FDA15E002FA690 /* SavedArtCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D82FA8A623E33CBF005B22D4 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D82FA88A23E3369A005B22D4 /* Assets.xcassets */,
+				D82FA88723E33697005B22D4 /* Main.storyboard */,
+				D82FA88C23E3369A005B22D4 /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		D82FA8A923E33E2E005B22D4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D82FA8AA23E33E49005B22D4 /* String+Validations.swift */,
+				CB0D6FAD23FC55EA0082178A /* GifExtension.swift */,
+				FC6D4D472416C48A00D5FB66 /* UIViewControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D82FA8AC23E33E61005B22D4 /* FirebaseHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				D82FA8AF23E33EBD005B22D4 /* FirebaseAuth.swift */,
+				D82FA8B123E33ED3005B22D4 /* FirestoreService.swift */,
+				FC1616FC23E8B45D00289C74 /* FirebaseStorageService.swift */,
+			);
+			path = FirebaseHelpers;
+			sourceTree = "<group>";
+		};
+		D82FA8B523E34A4C005B22D4 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D82FA8A923E33E2E005B22D4 /* Extensions */,
+				D82FA8B323E346B6005B22D4 /* UIUtilities.swift */,
+				CBBEC33A23F5A13800A83FD7 /* Delegates.swift */,
+				FC16170223FC8C6900289C74 /* ReuseIdentifiers.swift */,
+				CB18ADE52416CCDA00A8745A /* FilterButton.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		D972D1201EFBDF95CF045E70 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7C25476F3F868E50797CF2B5 /* Pods_ArtSpaceDos.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,11 +260,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D82FA89223E3369A005B22D4 /* Build configuration list for PBXNativeTarget "ArtSpaceDos" */;
 			buildPhases = (
-				D3DE1EB7F8FFBCEC60BF050E /* [CP] Check Pods Manifest.lock */,
+				7A7A8351C85E866630493179 /* [CP] Check Pods Manifest.lock */,
 				D82FA87A23E33697005B22D4 /* Sources */,
 				D82FA87B23E33697005B22D4 /* Frameworks */,
 				D82FA87C23E33697005B22D4 /* Resources */,
-				5447D3F24E4ADBA7BA427081 /* [CP] Embed Pods Frameworks */,
+				483235C6554D3C1D66CEB80B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -153,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D82FA88E23E3369A005B22D4 /* LaunchScreen.storyboard in Resources */,
+				D854837E23E385D300811E6B /* GoogleService-Info.plist in Resources */,
 				D82FA88B23E3369A005B22D4 /* Assets.xcassets in Resources */,
 				D82FA88923E33697005B22D4 /* Main.storyboard in Resources */,
 			);
@@ -161,7 +323,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5447D3F24E4ADBA7BA427081 /* [CP] Embed Pods Frameworks */ = {
+		483235C6554D3C1D66CEB80B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -178,7 +340,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArtSpaceDos/Pods-ArtSpaceDos-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D3DE1EB7F8FFBCEC60BF050E /* [CP] Check Pods Manifest.lock */ = {
+		7A7A8351C85E866630493179 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -207,9 +369,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D82FA88623E33697005B22D4 /* ViewController.swift in Sources */,
+				CB0D6FAE23FC55EA0082178A /* GifExtension.swift in Sources */,
+				CB0D6FAA23FC55A20082178A /* LoginViewController.swift in Sources */,
+				D82FA8A523E33CB1005B22D4 /* CreatePostViewController.swift in Sources */,
+				D82FA8A323E33C9E005B22D4 /* ArtDetailViewController.swift in Sources */,
+				D82FA8B223E33ED3005B22D4 /* FirestoreService.swift in Sources */,
+				D82FA8B023E33EBD005B22D4 /* FirebaseAuth.swift in Sources */,
+				FC1616FD23E8B45D00289C74 /* FirebaseStorageService.swift in Sources */,
+				D82FA89923E33BED005B22D4 /* AppUser.swift in Sources */,
+				D80E04D323ECAA4C00352C3E /* SavedArtViewController.swift in Sources */,
+				D82FA8A123E33C84005B22D4 /* MainViewController.swift in Sources */,
+				FC1616FF23ECA03900289C74 /* ARViewController.swift in Sources */,
+				D82FA89B23E33C12005B22D4 /* ArtObject.swift in Sources */,
 				D82FA88223E33697005B22D4 /* AppDelegate.swift in Sources */,
+				D80E04CF23ECAA2200352C3E /* ProfileViewController.swift in Sources */,
+				CB39CA0D2423F95B00F87E7E /* StripeAPIClient.swift in Sources */,
+				CB39CA1324241E3400F87E7E /* CheckoutViewController.swift in Sources */,
+				CBA886A423EDF40100E45D49 /* FilterViewController.swift in Sources */,
+				D886C88723FDA15E002FA690 /* SavedArtCollectionViewCell.swift in Sources */,
 				D82FA88423E33697005B22D4 /* SceneDelegate.swift in Sources */,
+				CB18ADE62416CCDA00A8745A /* FilterButton.swift in Sources */,
+				D82FA8A823E33D1F005B22D4 /* ArtCell.swift in Sources */,
+				D82FA8B423E346B6005B22D4 /* UIUtilities.swift in Sources */,
+				CBBEC33B23F5A13800A83FD7 /* Delegates.swift in Sources */,
+				FC16170323FC8C6900289C74 /* ReuseIdentifiers.swift in Sources */,
+				CB39CA072423D85A00F87E7E /* SaveCardViewController.swift in Sources */,
+				FC6D4D482416C48B00D5FB66 /* UIViewControllerExtension.swift in Sources */,
+				D80E04D123ECAA3900352C3E /* PurchaseHistoryViewController.swift in Sources */,
+				CB39CA1124241CC300F87E7E /* ShippingAddressViewController.swift in Sources */,
+				D82FA8AB23E33E49005B22D4 /* String+Validations.swift in Sources */,
+				CB39CA0F24241C8300F87E7E /* PaymentOptionsViewController.swift in Sources */,
+				CB00A3C024293E7000F42467 /* StripeKeys.swift in Sources */,
+				D80E04D523ECAAEC00352C3E /* MainTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,17 +542,18 @@
 		};
 		D82FA89323E3369A005B22D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A7E28B1BF34ABBC63718BE6C /* Pods-ArtSpaceDos.debug.xcconfig */;
+			baseConfigurationReference = 9EF2FABBA27444C92A5C1D0D /* Pods-ArtSpaceDos.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 453FAV4WWW;
 				INFOPLIST_FILE = ArtSpaceDos/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kabocha.ArtSpaceDos;
+				PRODUCT_BUNDLE_IDENTIFIER = Jocelyn.ArtSpacePrototype;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -370,17 +562,18 @@
 		};
 		D82FA89423E3369A005B22D4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E40CA08D5E200C85CD7AE45 /* Pods-ArtSpaceDos.release.xcconfig */;
+			baseConfigurationReference = 1F4C1F7545B4ED3F5B3C9619 /* Pods-ArtSpaceDos.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 453FAV4WWW;
 				INFOPLIST_FILE = ArtSpaceDos/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kabocha.ArtSpaceDos;
+				PRODUCT_BUNDLE_IDENTIFIER = Jocelyn.ArtSpacePrototype;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
