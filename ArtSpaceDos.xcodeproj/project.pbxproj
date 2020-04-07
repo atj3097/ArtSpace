@@ -17,6 +17,8 @@
 		CB39CA0F24241C8300F87E7E /* PaymentOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA0E24241C8300F87E7E /* PaymentOptionsViewController.swift */; };
 		CB39CA1124241CC300F87E7E /* ShippingAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA1024241CC300F87E7E /* ShippingAddressViewController.swift */; };
 		CB39CA1324241E3400F87E7E /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA1224241E3400F87E7E /* CheckoutViewController.swift */; };
+		CB6EA7F1243CD31700AA3123 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6EA7F0243CD31700AA3123 /* GoogleService-Info.plist */; };
+		CB6EA7F3243CF4C100AA3123 /* ArtSpaceBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6EA7F2243CF4C100AA3123 /* ArtSpaceBackend.swift */; };
 		CBA886A423EDF40100E45D49 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA886A323EDF40100E45D49 /* FilterViewController.swift */; };
 		CBBEC33B23F5A13800A83FD7 /* Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBEC33A23F5A13800A83FD7 /* Delegates.swift */; };
 		D80E04CF23ECAA2200352C3E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80E04CE23ECAA2200352C3E /* ProfileViewController.swift */; };
@@ -38,7 +40,6 @@
 		D82FA8B023E33EBD005B22D4 /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA8AF23E33EBD005B22D4 /* FirebaseAuth.swift */; };
 		D82FA8B223E33ED3005B22D4 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA8B123E33ED3005B22D4 /* FirestoreService.swift */; };
 		D82FA8B423E346B6005B22D4 /* UIUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA8B323E346B6005B22D4 /* UIUtilities.swift */; };
-		D854837E23E385D300811E6B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D854837D23E385D300811E6B /* GoogleService-Info.plist */; };
 		D886C88723FDA15E002FA690 /* SavedArtCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D886C88623FDA15E002FA690 /* SavedArtCollectionViewCell.swift */; };
 		FC1616FD23E8B45D00289C74 /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1616FC23E8B45D00289C74 /* FirebaseStorageService.swift */; };
 		FC1616FF23ECA03900289C74 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1616FE23ECA03900289C74 /* ARViewController.swift */; };
@@ -59,6 +60,8 @@
 		CB39CA0E24241C8300F87E7E /* PaymentOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptionsViewController.swift; sourceTree = "<group>"; };
 		CB39CA1024241CC300F87E7E /* ShippingAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingAddressViewController.swift; sourceTree = "<group>"; };
 		CB39CA1224241E3400F87E7E /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		CB6EA7F0243CD31700AA3123 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CB6EA7F2243CF4C100AA3123 /* ArtSpaceBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtSpaceBackend.swift; sourceTree = "<group>"; };
 		CBA886A323EDF40100E45D49 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		CBBEC33A23F5A13800A83FD7 /* Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegates.swift; sourceTree = "<group>"; };
 		D80E04CE23ECAA2200352C3E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +85,6 @@
 		D82FA8AF23E33EBD005B22D4 /* FirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
 		D82FA8B123E33ED3005B22D4 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		D82FA8B323E346B6005B22D4 /* UIUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtilities.swift; sourceTree = "<group>"; };
-		D854837D23E385D300811E6B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D886C88623FDA15E002FA690 /* SavedArtCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArtCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC1616FC23E8B45D00289C74 /* FirebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageService.swift; sourceTree = "<group>"; };
 		FC1616FE23ECA03900289C74 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 		D82FA88023E33697005B22D4 /* ArtSpaceDos */ = {
 			isa = PBXGroup;
 			children = (
+				CB6EA7F0243CD31700AA3123 /* GoogleService-Info.plist */,
 				D82FA89723E33BCE005B22D4 /* Models */,
 				D82FA89E23E33C41005B22D4 /* ViewControllers */,
 				D82FA8AC23E33E61005B22D4 /* FirebaseHelpers */,
@@ -161,7 +164,6 @@
 				D82FA88123E33697005B22D4 /* AppDelegate.swift */,
 				D82FA88323E33697005B22D4 /* SceneDelegate.swift */,
 				D82FA88F23E3369A005B22D4 /* Info.plist */,
-				D854837D23E385D300811E6B /* GoogleService-Info.plist */,
 			);
 			path = ArtSpaceDos;
 			sourceTree = "<group>";
@@ -171,6 +173,7 @@
 			children = (
 				D82FA89823E33BED005B22D4 /* AppUser.swift */,
 				D82FA89A23E33C12005B22D4 /* ArtObject.swift */,
+				CB6EA7F2243CF4C100AA3123 /* ArtSpaceBackend.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -314,7 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D82FA88E23E3369A005B22D4 /* LaunchScreen.storyboard in Resources */,
-				D854837E23E385D300811E6B /* GoogleService-Info.plist in Resources */,
+				CB6EA7F1243CD31700AA3123 /* GoogleService-Info.plist in Resources */,
 				D82FA88B23E3369A005B22D4 /* Assets.xcassets in Resources */,
 				D82FA88923E33697005B22D4 /* Main.storyboard in Resources */,
 			);
@@ -390,6 +393,7 @@
 				D82FA88423E33697005B22D4 /* SceneDelegate.swift in Sources */,
 				CB18ADE62416CCDA00A8745A /* FilterButton.swift in Sources */,
 				D82FA8A823E33D1F005B22D4 /* ArtCell.swift in Sources */,
+				CB6EA7F3243CF4C100AA3123 /* ArtSpaceBackend.swift in Sources */,
 				D82FA8B423E346B6005B22D4 /* UIUtilities.swift in Sources */,
 				CBBEC33B23F5A13800A83FD7 /* Delegates.swift in Sources */,
 				FC16170323FC8C6900289C74 /* ReuseIdentifiers.swift in Sources */,
