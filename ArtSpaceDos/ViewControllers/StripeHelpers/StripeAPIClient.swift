@@ -22,7 +22,7 @@ class MyAPIClient: NSObject, STPCustomerEphemeralKeyProvider {
     }
 
     static let sharedClient = MyAPIClient()
-    var baseURLString: String? = nil
+    var baseURLString: String? = ArtSpaceBackend.backendURL
     var baseURL: URL {
         if let urlString = self.baseURLString, let url = URL(string: urlString) {
             return url
