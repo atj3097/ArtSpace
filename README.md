@@ -24,3 +24,7 @@ Coming soon...
 Active 
 
 ## Instructions On Installation
+* Git Clone 
+* Pod install In Terminal
+* Build and Run app 
+* Checkout some great art!
