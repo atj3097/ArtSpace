@@ -21,4 +21,6 @@ ArtSpace is an immersive app where users can browse art available for sale and e
 Coming soon...
 
 ## Project Status
-Active
+Active 
+
+## Instructions On Installation
