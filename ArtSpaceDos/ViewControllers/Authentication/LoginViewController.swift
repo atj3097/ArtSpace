@@ -189,7 +189,7 @@ class LoginViewController: UIViewController {
         DispatchQueue.main.async {
             switch result {
             case .success(let user):
-                FirestoreService.manager.createAppUser(user: AppUser(from: user)) { [weak self] newResult in
+                FirestoreService.manager.createAppUser(user: AppUser(from: user, stripeId: "" )) { [weak self] newResult in
                     self?.addUserNameToUser(with: newResult)
                     
 //                    MyAPIClient.sharedClient.createCustomerKey(withAPIVersion: "2020-03-02") { (result),<#arg#>  in {
