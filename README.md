@@ -21,4 +21,10 @@ ArtSpace is an immersive app where users can browse art available for sale and e
 Coming soon...
 
 ## Project Status
-Active
+Active 
+
+## Instructions On Installation
+* Git Clone 
+* Pod install In Terminal
+* Build and Run app 
+* Checkout some great art!
