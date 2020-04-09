@@ -19,6 +19,7 @@
 		CB39CA1324241E3400F87E7E /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA1224241E3400F87E7E /* CheckoutViewController.swift */; };
 		CB6EA7F1243CD31700AA3123 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6EA7F0243CD31700AA3123 /* GoogleService-Info.plist */; };
 		CB6EA7F3243CF4C100AA3123 /* ArtSpaceBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6EA7F2243CF4C100AA3123 /* ArtSpaceBackend.swift */; };
+		CB9C1CF5243FC8DF009BA8B4 /* FirebaseCloudFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9C1CF4243FC8DF009BA8B4 /* FirebaseCloudFunctions.swift */; };
 		CBA886A423EDF40100E45D49 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA886A323EDF40100E45D49 /* FilterViewController.swift */; };
 		CBBEC33B23F5A13800A83FD7 /* Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBEC33A23F5A13800A83FD7 /* Delegates.swift */; };
 		D80E04CF23ECAA2200352C3E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80E04CE23ECAA2200352C3E /* ProfileViewController.swift */; };
@@ -62,6 +63,7 @@
 		CB39CA1224241E3400F87E7E /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		CB6EA7F0243CD31700AA3123 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB6EA7F2243CF4C100AA3123 /* ArtSpaceBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtSpaceBackend.swift; sourceTree = "<group>"; };
+		CB9C1CF4243FC8DF009BA8B4 /* FirebaseCloudFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCloudFunctions.swift; sourceTree = "<group>"; };
 		CBA886A323EDF40100E45D49 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		CBBEC33A23F5A13800A83FD7 /* Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegates.swift; sourceTree = "<group>"; };
 		D80E04CE23ECAA2200352C3E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				D82FA8AF23E33EBD005B22D4 /* FirebaseAuth.swift */,
 				D82FA8B123E33ED3005B22D4 /* FirestoreService.swift */,
 				FC1616FC23E8B45D00289C74 /* FirebaseStorageService.swift */,
+				CB9C1CF4243FC8DF009BA8B4 /* FirebaseCloudFunctions.swift */,
 			);
 			path = FirebaseHelpers;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				D82FA8AB23E33E49005B22D4 /* String+Validations.swift in Sources */,
 				CB39CA0F24241C8300F87E7E /* PaymentOptionsViewController.swift in Sources */,
 				CB00A3C024293E7000F42467 /* StripeKeys.swift in Sources */,
+				CB9C1CF5243FC8DF009BA8B4 /* FirebaseCloudFunctions.swift in Sources */,
 				D80E04D523ECAAEC00352C3E /* MainTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
