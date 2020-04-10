@@ -13,6 +13,7 @@ fileprivate enum FirestoreCollections: String {
     case AppUser
     case ArtObject
     case FavoriteArt
+    case stripe_customers
     
 }
 // MARK: - Add when we add search bar
@@ -46,6 +47,8 @@ class FirestoreService {
     
     
     
+    
+    
     func updateCurrentUser(userName: String? = nil, photoURL: URL? = nil, completion: @escaping (Result<(), Error>) -> ()) {
         guard let userID = FirebaseAuthService.manager.currentUser?.uid else {return}
         
@@ -64,20 +67,32 @@ class FirestoreService {
         }
          
     }
-    func updateStripeId(stripeId: String? = nil, completion: @escaping (Result<(), Error>) -> ()) {
+    func updateStripeId(completion: @escaping (Result<(), Error>) -> ()) {
         guard let userID = FirebaseAuthService.manager.currentUser?.uid else {return}
         
         var updateFields = [String:Any]()
-        if let customerId = stripeId {
-            updateFields["stripeCustomerId"] = customerId
+        database.collection(FirestoreCollections.stripe_customers.rawValue).getDocuments { (snapshot, error) in
+            if let error = error {
+                print(error)
+            }
+            let stripeId = snapshot?.documents.last?.documentID
+            updateFields["stripeCustomerId"] = stripeId
         }
+       print(updateFields)
         database.collection(FirestoreCollections.AppUser.rawValue).document(userID).updateData(updateFields) { (error) in
             if let error = error {
                 completion(.failure(error))
             }
             completion(.success(()))
         }
+        
          
+    }
+    func saveToken(tokenId: String) {
+        guard let userID = FirebaseAuthService.manager.currentUser?.uid else {return}
+        var updated = [String: Any]()
+        updated["tokenId"] = tokenId
+        database.collection(FirestoreCollections.stripe_customers.rawValue).document(userID).collection("tokens").addDocument(data: updated)
     }
     
     func getCurrentAppUser(uid: String, completion: @escaping (Result<AppUser, Error>) -> ()) {

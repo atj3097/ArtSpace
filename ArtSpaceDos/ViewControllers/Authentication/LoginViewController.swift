@@ -206,11 +206,15 @@ class LoginViewController: UIViewController {
                 FirestoreService.manager.updateCurrentUser(userName: self.usernameTextField.text ?? "", completion: { (result) in
                     self.handleCreatedUserInFirestore(result: result)
                 })
-                let stripeId = CloudFunctions.manager.createStripeCustomer()
-                FirestoreService.manager.updateStripeId(stripeId: stripeId , completion: {(result) in
-                    print(stripeId)
-                    
-                })
+         
+//                FirestoreService.manager.updateStripeId(completion: {(result) in
+//                    switch result {
+//                    case .success(()):
+//                        print("Success")
+//                    case .failure(let error):
+//                        print(error)
+//                    }
+//                })
             case .failure(let error):
                 self.showAlert(with: "Error creating user", and: "An error occured while creating new account \(error)")
             }

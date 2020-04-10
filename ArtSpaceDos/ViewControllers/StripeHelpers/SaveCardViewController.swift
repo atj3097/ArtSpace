@@ -51,8 +51,10 @@ class SaveCardViewController: STPAddCardViewController, STPAddCardViewController
                     print(error)
                               return
                           }
+                FirestoreService.manager.saveToken(tokenId: token.tokenId)
                 print(token.tokenId)
             }
+            
         }
     
     @objc private func backToProfile() {
