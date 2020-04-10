@@ -10,8 +10,10 @@ import UIKit
 import Stripe
 import SnapKit
 
-class SaveCardViewController: STPAddCardViewController {
-    
+class SaveCardViewController: STPAddCardViewController, STPAddCardViewControllerDelegate {
+    func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
+        print("")
+    }
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         UIUtilities.setUILabel(label, labelTitle: "Save Your Card", size: 14, alignment: .center)
@@ -38,19 +40,20 @@ class SaveCardViewController: STPAddCardViewController {
     
            @objc
            func pay() {
-            print("Save Button Clicked")
-               // Collect card details on the client
-//               let cardParams = "cardTextField.cardParams"
-//               let paymentMethodParams = STPPaymentMethodParams(card: cardParams, billingDetails: nil, metadata: nil)
-//               STPAPIClient.shared().createPaymentMethod(with: paymentMethodParams) { [weak self] paymentMethod, error in
-//                   guard let paymentMethod = paymentMethod else {
-//                       // Display the error to the user
-//                       return
-//                   }
-//                   let paymentMethodId = paymentMethod.stripeId
-//                   // Send paymentMethodId to your server for the next steps
-//               }
-           }
+            let cardParams = STPCardParams()
+            cardParams.name = "Adam Jackson"
+            cardParams.number = "4242424242424242"
+            cardParams.expMonth = 7
+            cardParams.expYear = 25
+            cardParams.cvc = "123"
+            STPAPIClient.shared().createToken(withCard: cardParams) { (token, error) in
+                  guard let token = token, error == nil else {
+                    print(error)
+                              return
+                          }
+                print(token.tokenId)
+            }
+        }
     
     @objc private func backToProfile() {
         dismiss(animated: true, completion: nil)
@@ -63,7 +66,6 @@ class SaveCardViewController: STPAddCardViewController {
             view.addSubview(backButton)
             constraints()
             view.backgroundColor = .white
-            // Do any additional setup after loading the view.
         }
     
         private func constraints() {
