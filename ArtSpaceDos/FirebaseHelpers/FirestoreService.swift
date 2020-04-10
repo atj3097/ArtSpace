@@ -64,6 +64,21 @@ class FirestoreService {
         }
          
     }
+    func updateStripeId(stripeId: String? = nil, completion: @escaping (Result<(), Error>) -> ()) {
+        guard let userID = FirebaseAuthService.manager.currentUser?.uid else {return}
+        
+        var updateFields = [String:Any]()
+        if let customerId = stripeId {
+            updateFields["stripeCustomerId"] = customerId
+        }
+        database.collection(FirestoreCollections.AppUser.rawValue).document(userID).updateData(updateFields) { (error) in
+            if let error = error {
+                completion(.failure(error))
+            }
+            completion(.success(()))
+        }
+         
+    }
     
     func getCurrentAppUser(uid: String, completion: @escaping (Result<AppUser, Error>) -> ()) {
  database.collection(FirestoreCollections.AppUser.rawValue).document(uid).getDocument { (snapshot, error) in
