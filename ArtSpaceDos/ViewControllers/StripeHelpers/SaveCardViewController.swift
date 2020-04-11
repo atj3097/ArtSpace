@@ -38,14 +38,27 @@ class SaveCardViewController: STPAddCardViewController, STPAddCardViewController
             return button
         }()
     
+    lazy var buyButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 130, height: 60))
+        UIUtilities.setUpButton(button, title: "Buy Card", backgroundColor: ArtSpaceConstants.artSpaceBlue, target: self, action: #selector(testPayment))
+        button.layer.cornerRadius = button.frame.height / 2
+        button.layer.shadowColor = UIColor(red: 35/255, green: 46/255, blue: 33/255, alpha: 1).cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 0.5)
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowRadius = 1
+        return button
+    }()
+    
            @objc
            func pay() {
             let cardParams = STPCardParams()
-            cardParams.name = "Adam Jackson"
+            cardParams.name = "Alissa Semple"
             cardParams.number = "4242424242424242"
-            cardParams.expMonth = 7
-            cardParams.expYear = 25
-            cardParams.cvc = "123"
+            cardParams.expMonth = 04
+            cardParams.expYear = 23
+            cardParams.cvc = "882"
+            var payment: PKPayment = PKPayment()
+
             STPAPIClient.shared().createToken(withCard: cardParams) { (token, error) in
                   guard let token = token, error == nil else {
                     print(error)
@@ -53,9 +66,15 @@ class SaveCardViewController: STPAddCardViewController, STPAddCardViewController
                           }
                 FirestoreService.manager.saveToken(tokenId: token.tokenId)
                 print(token.tokenId)
+       
             }
             
         }
+    
+    @objc private func testPayment() {
+        FirestoreService.manager.createCharge(amount: 20)
+        
+    }
     
     @objc private func backToProfile() {
         dismiss(animated: true, completion: nil)
@@ -66,6 +85,7 @@ class SaveCardViewController: STPAddCardViewController, STPAddCardViewController
             view.addSubview(titleLabel)
             view.addSubview(saveCard)
             view.addSubview(backButton)
+            view.addSubview(buyButton)
             constraints()
             view.backgroundColor = .white
         }
@@ -87,6 +107,13 @@ class SaveCardViewController: STPAddCardViewController, STPAddCardViewController
             saveCard.snp.makeConstraints{ make in
                 make.centerY.equalTo(view).offset(50)
                 make.centerX.equalTo(view)
+                make.width.equalTo(120)
+                make.height.equalTo(60)
+            }
+            
+            buyButton.snp.makeConstraints { make in
+                make.top.equalTo(saveCard)
+                make.left.equalTo(saveCard).offset(100)
                 make.width.equalTo(120)
                 make.height.equalTo(60)
             }

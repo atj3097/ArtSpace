@@ -91,8 +91,23 @@ class FirestoreService {
     func saveToken(tokenId: String) {
         guard let userID = FirebaseAuthService.manager.currentUser?.uid else {return}
         var updated = [String: Any]()
-        updated["tokenId"] = tokenId
-        database.collection(FirestoreCollections.stripe_customers.rawValue).document(userID).collection("tokens").addDocument(data: updated)
+        updated["pushId"] = tokenId
+        database.collection(FirestoreCollections.stripe_customers.rawValue).document(userID).collection("tokens").document(tokenId).setData(updated) { (error) in
+            if let error = error {
+                print(error)
+            }
+            print("Success?")
+        }
+    }
+    
+    func createCharge(amount: Int) {
+        var pennies = amount * 100
+        
+        var updated = [String: Any]()
+        updated["amount"] = pennies
+        guard let userID = FirebaseAuthService.manager.currentUser?.uid else {return}
+        database.collection(FirestoreCollections.stripe_customers.rawValue).document(userID).collection("charges").addDocument(data: updated)
+        
     }
     
     func getCurrentAppUser(uid: String, completion: @escaping (Result<AppUser, Error>) -> ()) {
