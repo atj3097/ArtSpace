@@ -20,6 +20,7 @@
 		CB39CA1324241E3400F87E7E /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA1224241E3400F87E7E /* CheckoutViewController.swift */; };
 		CB563A9E244178AB0034CBF9 /* PostArtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB563A9D244178AB0034CBF9 /* PostArtViewController.swift */; };
 		CB6EA7F3243CF4C100AA3123 /* ArtSpaceBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6EA7F2243CF4C100AA3123 /* ArtSpaceBackend.swift */; };
+		CB93870C24427193006E10CC /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93870B24427193006E10CC /* UserProfileCell.swift */; };
 		CB9C1CF5243FC8DF009BA8B4 /* FirebaseCloudFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9C1CF4243FC8DF009BA8B4 /* FirebaseCloudFunctions.swift */; };
 		CBA886A423EDF40100E45D49 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA886A323EDF40100E45D49 /* FilterViewController.swift */; };
 		CBBEC33B23F5A13800A83FD7 /* Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBEC33A23F5A13800A83FD7 /* Delegates.swift */; };
@@ -65,6 +66,7 @@
 		CB39CA1224241E3400F87E7E /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		CB563A9D244178AB0034CBF9 /* PostArtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostArtViewController.swift; sourceTree = "<group>"; };
 		CB6EA7F2243CF4C100AA3123 /* ArtSpaceBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtSpaceBackend.swift; sourceTree = "<group>"; };
+		CB93870B24427193006E10CC /* UserProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
 		CB9C1CF4243FC8DF009BA8B4 /* FirebaseCloudFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCloudFunctions.swift; sourceTree = "<group>"; };
 		CBA886A323EDF40100E45D49 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		CBBEC33A23F5A13800A83FD7 /* Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegates.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				D82FA8A723E33D1F005B22D4 /* ArtCell.swift */,
 				D886C88623FDA15E002FA690 /* SavedArtCollectionViewCell.swift */,
+				CB93870B24427193006E10CC /* UserProfileCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				D80E04CF23ECAA2200352C3E /* ProfileViewController.swift in Sources */,
 				CB39CA0D2423F95B00F87E7E /* StripeAPIClient.swift in Sources */,
 				CB39CA1324241E3400F87E7E /* CheckoutViewController.swift in Sources */,
+				CB93870C24427193006E10CC /* UserProfileCell.swift in Sources */,
 				CBA886A423EDF40100E45D49 /* FilterViewController.swift in Sources */,
 				D886C88723FDA15E002FA690 /* SavedArtCollectionViewCell.swift in Sources */,
 				D82FA88423E33697005B22D4 /* SceneDelegate.swift in Sources */,
