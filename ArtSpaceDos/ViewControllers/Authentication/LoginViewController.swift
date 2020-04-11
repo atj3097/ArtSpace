@@ -191,13 +191,6 @@ class LoginViewController: UIViewController {
             case .success(let user):
                 FirestoreService.manager.createAppUser(user: AppUser(from: user, stripeId: "" )) { [weak self] newResult in
                     self?.addUserNameToUser(with: newResult)
-                    
-//                    MyAPIClient.sharedClient.createCustomerKey(withAPIVersion: "2020-03-02") { (result),<#arg#>  in {
-//                        switch result:
-//                        case .
-//                        }
-//                        
-//                    }
              
                 }
             case .failure(let error):
@@ -213,6 +206,15 @@ class LoginViewController: UIViewController {
                 FirestoreService.manager.updateCurrentUser(userName: self.usernameTextField.text ?? "", completion: { (result) in
                     self.handleCreatedUserInFirestore(result: result)
                 })
+         
+//                FirestoreService.manager.updateStripeId(completion: {(result) in
+//                    switch result {
+//                    case .success(()):
+//                        print("Success")
+//                    case .failure(let error):
+//                        print(error)
+//                    }
+//                })
             case .failure(let error):
                 self.showAlert(with: "Error creating user", and: "An error occured while creating new account \(error)")
             }

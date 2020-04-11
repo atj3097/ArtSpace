@@ -12,12 +12,12 @@
 		CB0D6FAA23FC55A20082178A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0D6FA923FC55A20082178A /* LoginViewController.swift */; };
 		CB0D6FAE23FC55EA0082178A /* GifExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0D6FAD23FC55EA0082178A /* GifExtension.swift */; };
 		CB18ADE62416CCDA00A8745A /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB18ADE52416CCDA00A8745A /* FilterButton.swift */; };
+		CB19F57C24410FCB003BE464 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB19F57B24410FCB003BE464 /* GoogleService-Info.plist */; };
 		CB39CA072423D85A00F87E7E /* SaveCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA062423D85A00F87E7E /* SaveCardViewController.swift */; };
 		CB39CA0D2423F95B00F87E7E /* StripeAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA0C2423F95B00F87E7E /* StripeAPIClient.swift */; };
 		CB39CA0F24241C8300F87E7E /* PaymentOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA0E24241C8300F87E7E /* PaymentOptionsViewController.swift */; };
 		CB39CA1124241CC300F87E7E /* ShippingAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA1024241CC300F87E7E /* ShippingAddressViewController.swift */; };
 		CB39CA1324241E3400F87E7E /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA1224241E3400F87E7E /* CheckoutViewController.swift */; };
-		CB6EA7F1243CD31700AA3123 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6EA7F0243CD31700AA3123 /* GoogleService-Info.plist */; };
 		CB6EA7F3243CF4C100AA3123 /* ArtSpaceBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6EA7F2243CF4C100AA3123 /* ArtSpaceBackend.swift */; };
 		CB9C1CF5243FC8DF009BA8B4 /* FirebaseCloudFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9C1CF4243FC8DF009BA8B4 /* FirebaseCloudFunctions.swift */; };
 		CBA886A423EDF40100E45D49 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA886A323EDF40100E45D49 /* FilterViewController.swift */; };
@@ -56,12 +56,12 @@
 		CB0D6FA923FC55A20082178A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CB0D6FAD23FC55EA0082178A /* GifExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifExtension.swift; sourceTree = "<group>"; };
 		CB18ADE52416CCDA00A8745A /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
+		CB19F57B24410FCB003BE464 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB39CA062423D85A00F87E7E /* SaveCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCardViewController.swift; sourceTree = "<group>"; };
 		CB39CA0C2423F95B00F87E7E /* StripeAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeAPIClient.swift; sourceTree = "<group>"; };
 		CB39CA0E24241C8300F87E7E /* PaymentOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptionsViewController.swift; sourceTree = "<group>"; };
 		CB39CA1024241CC300F87E7E /* ShippingAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingAddressViewController.swift; sourceTree = "<group>"; };
 		CB39CA1224241E3400F87E7E /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
-		CB6EA7F0243CD31700AA3123 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB6EA7F2243CF4C100AA3123 /* ArtSpaceBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtSpaceBackend.swift; sourceTree = "<group>"; };
 		CB9C1CF4243FC8DF009BA8B4 /* FirebaseCloudFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCloudFunctions.swift; sourceTree = "<group>"; };
 		CBA886A323EDF40100E45D49 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 		D82FA88023E33697005B22D4 /* ArtSpaceDos */ = {
 			isa = PBXGroup;
 			children = (
-				CB6EA7F0243CD31700AA3123 /* GoogleService-Info.plist */,
+				CB19F57B24410FCB003BE464 /* GoogleService-Info.plist */,
 				D82FA89723E33BCE005B22D4 /* Models */,
 				D82FA89E23E33C41005B22D4 /* ViewControllers */,
 				D82FA8AC23E33E61005B22D4 /* FirebaseHelpers */,
@@ -320,7 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D82FA88E23E3369A005B22D4 /* LaunchScreen.storyboard in Resources */,
-				CB6EA7F1243CD31700AA3123 /* GoogleService-Info.plist in Resources */,
+				CB19F57C24410FCB003BE464 /* GoogleService-Info.plist in Resources */,
 				D82FA88B23E3369A005B22D4 /* Assets.xcassets in Resources */,
 				D82FA88923E33697005B22D4 /* Main.storyboard in Resources */,
 			);

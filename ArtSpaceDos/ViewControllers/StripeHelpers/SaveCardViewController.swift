@@ -10,8 +10,10 @@ import UIKit
 import Stripe
 import SnapKit
 
-class SaveCardViewController: STPAddCardViewController {
-    
+class SaveCardViewController: STPAddCardViewController, STPAddCardViewControllerDelegate {
+    func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
+        print("")
+    }
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         UIUtilities.setUILabel(label, labelTitle: "Save Your Card", size: 14, alignment: .center)
@@ -36,21 +38,43 @@ class SaveCardViewController: STPAddCardViewController {
             return button
         }()
     
+    lazy var buyButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 130, height: 60))
+        UIUtilities.setUpButton(button, title: "Buy Card", backgroundColor: ArtSpaceConstants.artSpaceBlue, target: self, action: #selector(testPayment))
+        button.layer.cornerRadius = button.frame.height / 2
+        button.layer.shadowColor = UIColor(red: 35/255, green: 46/255, blue: 33/255, alpha: 1).cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 0.5)
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowRadius = 1
+        return button
+    }()
+    
            @objc
            func pay() {
-            print("Save Button Clicked")
-               // Collect card details on the client
-//               let cardParams = "cardTextField.cardParams"
-//               let paymentMethodParams = STPPaymentMethodParams(card: cardParams, billingDetails: nil, metadata: nil)
-//               STPAPIClient.shared().createPaymentMethod(with: paymentMethodParams) { [weak self] paymentMethod, error in
-//                   guard let paymentMethod = paymentMethod else {
-//                       // Display the error to the user
-//                       return
-//                   }
-//                   let paymentMethodId = paymentMethod.stripeId
-//                   // Send paymentMethodId to your server for the next steps
-//               }
-           }
+            let cardParams = STPCardParams()
+            cardParams.name = "Alissa Semple"
+            cardParams.number = "4242424242424242"
+            cardParams.expMonth = 04
+            cardParams.expYear = 23
+            cardParams.cvc = "882"
+            var payment: PKPayment = PKPayment()
+
+            STPAPIClient.shared().createToken(withCard: cardParams) { (token, error) in
+                  guard let token = token, error == nil else {
+                    print(error)
+                              return
+                          }
+                FirestoreService.manager.saveToken(tokenId: token.tokenId)
+                print(token.tokenId)
+       
+            }
+            
+        }
+    
+    @objc private func testPayment() {
+        FirestoreService.manager.createCharge(amount: 20)
+        
+    }
     
     @objc private func backToProfile() {
         dismiss(animated: true, completion: nil)
@@ -61,9 +85,9 @@ class SaveCardViewController: STPAddCardViewController {
             view.addSubview(titleLabel)
             view.addSubview(saveCard)
             view.addSubview(backButton)
+            view.addSubview(buyButton)
             constraints()
             view.backgroundColor = .white
-            // Do any additional setup after loading the view.
         }
     
         private func constraints() {
@@ -83,6 +107,13 @@ class SaveCardViewController: STPAddCardViewController {
             saveCard.snp.makeConstraints{ make in
                 make.centerY.equalTo(view).offset(50)
                 make.centerX.equalTo(view)
+                make.width.equalTo(120)
+                make.height.equalTo(60)
+            }
+            
+            buyButton.snp.makeConstraints { make in
+                make.top.equalTo(saveCard)
+                make.left.equalTo(saveCard).offset(100)
                 make.width.equalTo(120)
                 make.height.equalTo(60)
             }

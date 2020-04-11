@@ -13,6 +13,7 @@ fileprivate enum FirestoreCollections: String {
     case AppUser
     case ArtObject
     case FavoriteArt
+    case stripe_customers
     
 }
 // MARK: - Add when we add search bar
@@ -46,6 +47,8 @@ class FirestoreService {
     
     
     
+    
+    
     func updateCurrentUser(userName: String? = nil, photoURL: URL? = nil, completion: @escaping (Result<(), Error>) -> ()) {
         guard let userID = FirebaseAuthService.manager.currentUser?.uid else {return}
         
@@ -63,6 +66,48 @@ class FirestoreService {
             completion(.success(()))
         }
          
+    }
+    func updateStripeId(completion: @escaping (Result<(), Error>) -> ()) {
+        guard let userID = FirebaseAuthService.manager.currentUser?.uid else {return}
+        
+        var updateFields = [String:Any]()
+        database.collection(FirestoreCollections.stripe_customers.rawValue).getDocuments { (snapshot, error) in
+            if let error = error {
+                print(error)
+            }
+            let stripeId = snapshot?.documents.last?.documentID
+            updateFields["stripeCustomerId"] = stripeId
+        }
+       print(updateFields)
+        database.collection(FirestoreCollections.AppUser.rawValue).document(userID).updateData(updateFields) { (error) in
+            if let error = error {
+                completion(.failure(error))
+            }
+            completion(.success(()))
+        }
+        
+         
+    }
+    func saveToken(tokenId: String) {
+        guard let userID = FirebaseAuthService.manager.currentUser?.uid else {return}
+        var updated = [String: Any]()
+        updated["pushId"] = tokenId
+        database.collection(FirestoreCollections.stripe_customers.rawValue).document(userID).collection("tokens").document(tokenId).setData(updated) { (error) in
+            if let error = error {
+                print(error)
+            }
+            print("Success?")
+        }
+    }
+    
+    func createCharge(amount: Int) {
+        var pennies = amount * 100
+        
+        var updated = [String: Any]()
+        updated["amount"] = pennies
+        guard let userID = FirebaseAuthService.manager.currentUser?.uid else {return}
+        database.collection(FirestoreCollections.stripe_customers.rawValue).document(userID).collection("charges").addDocument(data: updated)
+        
     }
     
     func getCurrentAppUser(uid: String, completion: @escaping (Result<AppUser, Error>) -> ()) {
