@@ -18,6 +18,7 @@
 		CB39CA0F24241C8300F87E7E /* PaymentOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA0E24241C8300F87E7E /* PaymentOptionsViewController.swift */; };
 		CB39CA1124241CC300F87E7E /* ShippingAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA1024241CC300F87E7E /* ShippingAddressViewController.swift */; };
 		CB39CA1324241E3400F87E7E /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA1224241E3400F87E7E /* CheckoutViewController.swift */; };
+		CB563A9E244178AB0034CBF9 /* PostArtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB563A9D244178AB0034CBF9 /* PostArtViewController.swift */; };
 		CB6EA7F3243CF4C100AA3123 /* ArtSpaceBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6EA7F2243CF4C100AA3123 /* ArtSpaceBackend.swift */; };
 		CB9C1CF5243FC8DF009BA8B4 /* FirebaseCloudFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9C1CF4243FC8DF009BA8B4 /* FirebaseCloudFunctions.swift */; };
 		CBA886A423EDF40100E45D49 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA886A323EDF40100E45D49 /* FilterViewController.swift */; };
@@ -62,6 +63,7 @@
 		CB39CA0E24241C8300F87E7E /* PaymentOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptionsViewController.swift; sourceTree = "<group>"; };
 		CB39CA1024241CC300F87E7E /* ShippingAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingAddressViewController.swift; sourceTree = "<group>"; };
 		CB39CA1224241E3400F87E7E /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		CB563A9D244178AB0034CBF9 /* PostArtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostArtViewController.swift; sourceTree = "<group>"; };
 		CB6EA7F2243CF4C100AA3123 /* ArtSpaceBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtSpaceBackend.swift; sourceTree = "<group>"; };
 		CB9C1CF4243FC8DF009BA8B4 /* FirebaseCloudFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCloudFunctions.swift; sourceTree = "<group>"; };
 		CBA886A323EDF40100E45D49 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				D80E04D023ECAA3900352C3E /* PurchaseHistoryViewController.swift */,
 				D80E04D223ECAA4C00352C3E /* SavedArtViewController.swift */,
 				CBA886A323EDF40100E45D49 /* FilterViewController.swift */,
+				CB563A9D244178AB0034CBF9 /* PostArtViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				D82FA8B423E346B6005B22D4 /* UIUtilities.swift in Sources */,
 				CBBEC33B23F5A13800A83FD7 /* Delegates.swift in Sources */,
 				FC16170323FC8C6900289C74 /* ReuseIdentifiers.swift in Sources */,
+				CB563A9E244178AB0034CBF9 /* PostArtViewController.swift in Sources */,
 				CB39CA072423D85A00F87E7E /* SaveCardViewController.swift in Sources */,
 				FC6D4D482416C48B00D5FB66 /* UIViewControllerExtension.swift in Sources */,
 				D80E04D123ECAA3900352C3E /* PurchaseHistoryViewController.swift in Sources */,
