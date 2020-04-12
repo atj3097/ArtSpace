@@ -2,8 +2,8 @@
 //  ProfileViewController.swift
 //  ArtSpaceDos
 //
-//  Created by Jocelyn Boyd on 2/6/20.
-//  Copyright © 2020 Jocelyn Boyd. All rights reserved.
+//  Created by Adam Jackson on 2/6/20.
+//  Copyright © 2020 Adam Jackson. All rights reserved.
 //
 
 import UIKit
@@ -47,9 +47,10 @@ class ProfileViewController: UIViewController {
     
     lazy var buyerOrSeller: UILabel = {
         let label = UILabel()
-        UIUtilities.setUILabel(label, labelTitle: "Buyer", size: 15, alignment: .left)
+        UIUtilities.setUILabel(label, labelTitle: "adam@artspace.org", size: 15, alignment: .left)
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.numberOfLines = 0
         return label
     }()
     

@@ -2,8 +2,8 @@
 //  SaveCardViewController.swift
 //  ArtSpaceDos
 //
-//  Created by God on 3/19/20.
-//  Copyright © 2020 Jocelyn Boyd. All rights reserved.
+//  Created by Adam Jackson on 3/19/20.
+//  Copyright © 2020 Adam Jackson. All rights reserved.
 //
 
 import UIKit
