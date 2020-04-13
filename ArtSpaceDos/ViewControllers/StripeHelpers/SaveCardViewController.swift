@@ -12,13 +12,6 @@ import SnapKit
 
 class SaveCardViewController: STPAddCardViewController {
     
-
-    
-    @objc private func testPayment() {
-        FirestoreService.manager.createCharge(amount: 20)
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationButtons()
