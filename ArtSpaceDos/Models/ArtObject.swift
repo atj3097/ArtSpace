@@ -21,7 +21,7 @@ struct ArtObject {
     let sellerID: String
     let price: Double
   //MARK: TODO: remove default status
-    let soldStatus: Bool = true
+    var soldStatus: Bool
     let dateCreated: Date?
     let tags: [String]
     
@@ -63,7 +63,7 @@ struct ArtObject {
     
 //    MARK: - Init
   
-    init(artistName: String, artDescription: String, width: CGFloat, height: CGFloat, artImageURL: String, sellerID: String, price: Double, dateCreated: Date? = nil, tags: [String]){
+    init(artistName: String, artDescription: String, width: CGFloat, height: CGFloat, artImageURL: String, sellerID: String, price: Double, dateCreated: Date? = nil, tags: [String], soldStatus: Bool){
         self.artistName = artistName
         self.artDescription = artDescription
         self.width = width
@@ -74,6 +74,7 @@ struct ArtObject {
         self.price = price
         self.dateCreated = dateCreated
         self.tags = tags
+        self.soldStatus = soldStatus
     }
     
     init?(from dict: [String:Any], id: String) {
@@ -86,7 +87,7 @@ struct ArtObject {
         let sellerID = dict["sellerID"] as? String,
         let price = dict["price"] as? Double,
         let dateCreated = (dict["dateCreated"] as? Timestamp)?.dateValue(),
-        let tags = dict["tags"] as? [String] else {return nil}
+        let tags = dict["tags"] as? [String], let sold = dict["soldStatus"] as? Bool else {return nil}
         
         self.artistName = artistName
         self.artDescription = artDescription
@@ -98,10 +99,11 @@ struct ArtObject {
         self.dateCreated = dateCreated
         self.artID = artID
         self.tags = tags
+        self.soldStatus = sold
     }
     
     var fieldsDict: [String:Any] {
-        return ["artistName": self.artistName, "artDescription": self.artDescription, "width": self.width, "height": self.height, "artImageURL": self.artImageURL, "artID": self.artID, "sellerID": self.sellerID, "price": self.price, "tags": self.tags ]
+        return ["artistName": self.artistName, "artDescription": self.artDescription, "width": self.width, "height": self.height, "artImageURL": self.artImageURL, "artID": self.artID, "sellerID": self.sellerID, "price": self.price, "tags": self.tags, "soldStatus": self.soldStatus ]
     }
     
 }

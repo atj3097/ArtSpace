@@ -37,7 +37,6 @@
 		D82FA89B23E33C12005B22D4 /* ArtObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA89A23E33C12005B22D4 /* ArtObject.swift */; };
 		D82FA8A123E33C84005B22D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA8A023E33C84005B22D4 /* MainViewController.swift */; };
 		D82FA8A323E33C9E005B22D4 /* ArtDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA8A223E33C9E005B22D4 /* ArtDetailViewController.swift */; };
-		D82FA8A523E33CB1005B22D4 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA8A423E33CB1005B22D4 /* CreatePostViewController.swift */; };
 		D82FA8A823E33D1F005B22D4 /* ArtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA8A723E33D1F005B22D4 /* ArtCell.swift */; };
 		D82FA8AB23E33E49005B22D4 /* String+Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA8AA23E33E49005B22D4 /* String+Validations.swift */; };
 		D82FA8B023E33EBD005B22D4 /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FA8AF23E33EBD005B22D4 /* FirebaseAuth.swift */; };
@@ -85,7 +84,6 @@
 		D82FA89A23E33C12005B22D4 /* ArtObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtObject.swift; sourceTree = "<group>"; };
 		D82FA8A023E33C84005B22D4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D82FA8A223E33C9E005B22D4 /* ArtDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDetailViewController.swift; sourceTree = "<group>"; };
-		D82FA8A423E33CB1005B22D4 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		D82FA8A723E33D1F005B22D4 /* ArtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtCell.swift; sourceTree = "<group>"; };
 		D82FA8AA23E33E49005B22D4 /* String+Validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validations.swift"; sourceTree = "<group>"; };
 		D82FA8AF23E33EBD005B22D4 /* FirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
@@ -193,7 +191,6 @@
 				D82FA8A023E33C84005B22D4 /* MainViewController.swift */,
 				D80E04D423ECAAEC00352C3E /* MainTabBarController.swift */,
 				D82FA8A223E33C9E005B22D4 /* ArtDetailViewController.swift */,
-				D82FA8A423E33CB1005B22D4 /* CreatePostViewController.swift */,
 				FC1616FE23ECA03900289C74 /* ARViewController.swift */,
 				D80E04CE23ECAA2200352C3E /* ProfileViewController.swift */,
 				D80E04D023ECAA3900352C3E /* PurchaseHistoryViewController.swift */,
@@ -383,7 +380,6 @@
 			files = (
 				CB0D6FAE23FC55EA0082178A /* GifExtension.swift in Sources */,
 				CB0D6FAA23FC55A20082178A /* LoginViewController.swift in Sources */,
-				D82FA8A523E33CB1005B22D4 /* CreatePostViewController.swift in Sources */,
 				D82FA8A323E33C9E005B22D4 /* ArtDetailViewController.swift in Sources */,
 				D82FA8B223E33ED3005B22D4 /* FirestoreService.swift in Sources */,
 				D82FA8B023E33EBD005B22D4 /* FirebaseAuth.swift in Sources */,

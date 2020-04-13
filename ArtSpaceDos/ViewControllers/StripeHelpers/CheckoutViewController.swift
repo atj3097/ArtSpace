@@ -62,7 +62,7 @@ class CheckoutViewController: UIViewController {
         super.viewDidLoad()
         addSubViews()
         constraints()
-        currentArtObject = ArtObject(artistName: "Adam", artDescription: "Buddha", width: 0.0, height: 0.0, artImageURL: "https://firebasestorage.googleapis.com/v0/b/artspaceprototype.appspot.com/o/1513295535487.jpg?alt=media&token=0f592691-a4c8-4a4e-b7d5-6c7e4ebed445", sellerID: "", price: 20.05, dateCreated: nil, tags: ["Painting"])
+//        currentArtObject = ArtObject(artistName: "Adam", artDescription: "Buddha", width: 0.0, height: 0.0, artImageURL: "https://firebasestorage.googleapis.com/v0/b/artspaceprototype.appspot.com/o/1513295535487.jpg?alt=media&token=0f592691-a4c8-4a4e-b7d5-6c7e4ebed445", sellerID: "", price: 20.05, dateCreated: nil, tags: ["Painting"])
         let url = URL(string: currentArtObject.artImageURL)
         artImage.kf.setImage(with: url)
         view.backgroundColor = UIColor.white.withAlphaComponent(0.5)

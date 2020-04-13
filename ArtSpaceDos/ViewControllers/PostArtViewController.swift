@@ -187,7 +187,7 @@ final class PostArtViewController: UIViewController {
             
             if let price = priceDouble, let width = widthCGFloat, let height = heightCGFloat {
                 guard price != 0.0, width != 0.0, height != 0.0 else {showAlert(with: "Error", and: "Invalid entry; check fields"); return}
-                let newArtObject = ArtObject(artistName: artist.userName ?? "No artist name", artDescription: description, width: (width / 100) , height: (height / 100), artImageURL: photoURLString, sellerID: artist.uid, price: price, tags: ["2"])
+                let newArtObject = ArtObject(artistName: artist.userName ?? "No artist name", artDescription: description, width: (width / 100) , height: (height / 100), artImageURL: photoURLString, sellerID: name.text!, price: price, tags: ["2"], soldStatus: false)
                 
                 FirestoreService.manager.createArtObject(artObject: newArtObject) { (result) in
                     switch result {

@@ -40,6 +40,7 @@ class MainViewController: UIViewController {
     addSubviews()
     setupUIConstraints()
     getArtPosts()
+
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -151,7 +152,7 @@ extension MainViewController: UICollectionViewDelegate {
     //MARK: TO DO - Pass data of current cell to Detail View
     let detailVC = ArtDetailViewController()
     detailVC.currentArtObject = specificArtObject
-    self.navigationController?.pushViewController(detailVC, animated: true)
+    navigationController?.pushViewController(detailVC, animated: true)
   }
 }
 

@@ -40,7 +40,7 @@ class ArtCell: UICollectionViewCell {
         super.init(frame: frame)
         addSubViews()
         addConstraints()
-        setupContentView()
+        setupContentView()  
     }
     
     required init?(coder: NSCoder) {
