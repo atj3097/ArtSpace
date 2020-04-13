@@ -2,8 +2,8 @@
 //  ProfileViewController.swift
 //  ArtSpaceDos
 //
-//  Created by Jocelyn Boyd on 2/6/20.
-//  Copyright © 2020 Jocelyn Boyd. All rights reserved.
+//  Created by Adam Jackson on 2/6/20.
+//  Copyright © 2020 Adam Jackson. All rights reserved.
 //
 
 import UIKit
@@ -12,10 +12,10 @@ import Photos
 import Firebase
 import Kingfisher
 import Stripe
+
 class ProfileViewController: UIViewController {
     
-
-   
+    let profileOptions: [String: (UIImage, String)] = ["Saved Art": (UIImage(systemName: "bookmark")!, "See Your Favorite Art"), "Billing Info": (UIImage(systemName: "creditcard.fill")!, "Save A New Card Or Change Address"), "Purchase History": (UIImage(systemName: "book.fill")!, "See What You Bought!"), "Edit Profile": (UIImage(systemName: "person")!, "Customize Your Profile")]
     var displayNameHolder = "Display Name"
     var defaultImage = UIImage(systemName: "1")
     var settingFromLogin = false
@@ -28,16 +28,53 @@ class ProfileViewController: UIViewController {
             profileImage.image = savedImage
         }
     }
+    
+    lazy var tableView: UITableView = {
+       let table = UITableView(frame: .zero, style: .plain)
+       table.register(UserProfileCell.self, forCellReuseIdentifier: "profileCell")
+        table.backgroundColor = .white
+        return table
+    }()
 
     
     //MARK: UI OBJC
     lazy var userNameLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .center
-        label.text = "Welcome"
-        label.textColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+        UIUtilities.setUILabel(label, labelTitle: "atj2097", size: 30, alignment: .left)
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 30)
         return label
     }()
+    
+    lazy var buyerOrSeller: UILabel = {
+        let label = UILabel()
+        UIUtilities.setUILabel(label, labelTitle: "adam@artspace.org", size: 15, alignment: .left)
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    lazy var numberOfPosts: UILabel = {
+        let label = UILabel()
+               UIUtilities.setUILabel(label, labelTitle: "      0 \n Posts", size: 25, alignment: .left)
+               label.textColor = .white
+               label.font = UIFont.boldSystemFont(ofSize: 25)
+        label.numberOfLines = 0
+        
+               return label
+    }()
+    
+    lazy var artPurchased: UILabel = {
+        let label = UILabel()
+               UIUtilities.setUILabel(label, labelTitle: "      0 \n Purchases", size: 25, alignment: .left)
+               label.textColor = .white
+               label.font = UIFont.boldSystemFont(ofSize: 25)
+        label.numberOfLines = 0
+        
+               return label
+    }()
+    
     
     lazy var profileImage: UIImageView = {
         let image = UIImageView()
@@ -46,8 +83,8 @@ class ProfileViewController: UIViewController {
         image.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
         image.layer.borderWidth = 5.0
         var frame = image.frame
-        frame.size.width = 150
-        frame.size.height = 150
+        frame.size.width = 100
+        frame.size.height = 100
         image.frame = frame
         image.clipsToBounds = true
         image.backgroundColor = .white
@@ -63,8 +100,8 @@ class ProfileViewController: UIViewController {
     
     lazy var editDisplayNameButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Edit Username", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitle("Edit Profile", for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(editDisplayNamePressed), for: .touchUpInside)
         return button
     }()
@@ -119,41 +156,58 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
+    lazy var backgroundImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = #imageLiteral(resourceName: "profileBackground")
+        return imageView
+    }()
+    
     
     //MARK: addSubviews
     func addSubviews() {
         view.addSubview(profileImage)
+        view.addSubview(buyerOrSeller)
+        view.addSubview(numberOfPosts)
         // view.addSubview(uploadButton)
-        view.addSubview(uploadImageButton)
-        view.addSubview(saveButton)
-        view.addSubview(userNameLabel)
-        view.addSubview(textField)
+//        view.addSubview(uploadImageButton)
+//        view.addSubview(saveButton)
+         view.addSubview(userNameLabel)
+//        view.addSubview(textField)
         view.addSubview(editDisplayNameButton)
-        view.addSubview(savePaymentInformation)
+//        view.addSubview(savePaymentInformation)
     }
     //MARK:ViewDidLoad cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(backgroundImage)
+        tableView.delegate = self
+        tableView.dataSource = self
+        navigationController?.navigationBar.isHidden = true
+        backgroundImage.snp.makeConstraints({ make in
+            make.top.equalTo(self.view)
+            make.left.equalTo(view)
+            make.right.equalTo(view)
+            make.bottom.equalTo(view)
+        })
         addSubviews()
         constrainProfilePicture()
-        saveChangesConstraints()
-        constrainDisplayname()
+//        saveChangesConstraints()
+      constrainDisplayname()
         editUserNameConstraints()
-        uploadImageConstraints()
-        saveCardConstraints()
+//        uploadImageConstraints()
+//        saveCardConstraints()
         if let displayName = FirebaseAuthService.manager.currentUser?.displayName {
             loadImage()
             userNameLabel.text = displayName
-            
             let user = FirebaseAuthService.manager.currentUser
             imageURL = user?.photoURL
         }
         
         
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SignOut", style: .plain, target: self, action: #selector(signOutFunc))
-        self.navigationController?.navigationBar.isHidden = false
-        UIUtilities.setViewBackgroundColor(view)
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SignOut", style: .plain, target: self, action: #selector(signOutFunc))
+//        self.navigationController?.navigationBar.isHidden = false
+//        UIUtilities.setViewBackgroundColor(view)
         
     }
 
@@ -362,19 +416,34 @@ class ProfileViewController: UIViewController {
     //MARK: Constraints
     
     private func constrainProfilePicture() {
+        
         profileImage.snp.makeConstraints { (make) in
-            make.top.equalTo(self.view).offset(250)
-            make.centerX.equalTo(self.view)
+            make.top.equalTo(self.view).offset(75)
+            make.left.equalTo(view).offset(25)
             make.height.equalTo(profileImage.frame.height)
             make.width.equalTo(profileImage.frame.width)
         }
     }
     private func constrainDisplayname() {
         userNameLabel.snp.makeConstraints { (make) in
-            //   make.top.greaterThanOrEqualTo(profileImage).offset(-50)
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(60)
-            make.centerX.equalTo(self.view)
+            make.right.equalTo(profileImage).offset(130)
+            make.top.equalTo(profileImage)
         }
+        
+        buyerOrSeller.snp.makeConstraints{ (make) in
+            make.left.equalTo(userNameLabel)
+            make.top.equalTo(userNameLabel).offset(40)
+        }
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: numberOfPosts.bottomAnchor,constant: 50),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        
+        
+        ])
     }
     
     private func uploadImageConstraints() {
@@ -395,10 +464,15 @@ class ProfileViewController: UIViewController {
     
     
     private func editUserNameConstraints() {
-        editDisplayNameButton.snp.makeConstraints { (make) in
-            make.centerY.equalTo(self.profileImage).offset(100)
-            make.centerX.equalTo(self.view)
+        numberOfPosts.snp.makeConstraints { (make) in
+            make.bottom.equalTo(profileImage).offset(75)
+            make.left.equalTo(profileImage).offset(10)
         }
+//        view.addSubview(artPurchased)
+//        artPurchased.snp.makeConstraints({ (make) in
+//            make.top.equalTo(numberOfPosts)
+//            make.centerX.equalTo(view)
+//        })
     }
  
     
@@ -408,7 +482,6 @@ class ProfileViewController: UIViewController {
             make.centerX.equalTo(saveButton)
             make.width.equalTo(saveButton)
             make.height.equalTo(saveButton)
-            
         }
     }
     
@@ -445,5 +518,81 @@ extension ProfileViewController:UIImagePickerControllerDelegate, UINavigationCon
         picker.dismiss(animated: true, completion: nil)
     }
 }
-
-
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return profileOptions.count + 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+         guard let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as? UserProfileCell else {return UITableViewCell()}
+        cell.backgroundColor = .clear
+        switch indexPath.row {
+        case 0:
+            cell.title.text = "Saved Art"
+            cell.numberOfTimes.text = profileOptions["Save Art"]?.1
+            cell.trashIcon.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        case 1:
+            cell.title.text = "Billing Information"
+            cell.trashIcon.setImage(UIImage(systemName: "creditcard.fill"), for: .normal)
+        case 2:
+            cell.title.text = "Purchase History"
+            cell.trashIcon.setImage(UIImage(systemName: "book"), for: .normal)
+        case 3:
+            cell.title.text = "Edit Profile"
+            cell.trashIcon.setImage(UIImage(systemName: "person.fill"), for: .normal)
+        case 4:
+            cell.title.text = "Post Your Own Art To Sell"
+            cell.trashIcon.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+        case 5:
+            cell.title.text = "Logout"
+        default:
+            print("")
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            let viewController = SavedArtViewController()
+            present(viewController, animated: true, completion: nil)
+        case 1:
+            let config = STPPaymentConfiguration()
+            config.requiredBillingAddressFields = .full
+            let theme = STPTheme.default()
+            theme.accentColor = ArtSpaceConstants.artSpaceBlue
+            theme.primaryBackgroundColor = .white
+            theme.barStyle = .black
+            let viewController = SaveCardViewController(configuration: config, theme: theme)
+            let navigationController = UINavigationController(rootViewController: viewController)
+            navigationController.navigationBar.stp_theme = theme
+            
+            navigationController.navigationBar.barStyle = .black
+            present(navigationController, animated: true, completion: nil)
+        case 2:
+            print("Purchase History")
+        case 3:
+            print("Edit Profile")
+        case 4:
+            let postController = PostArtViewController()
+            present(postController, animated: true, completion: nil)
+        case 5:
+            FirebaseAuthService.manager.logoutUser()
+            let loginPage = LoginViewController()
+            self.navigationController?.pushViewController(loginPage, animated: true)
+            self.tabBarController?.dismiss(animated: true, completion: nil)
+        default:
+            print("")
+        }
+    }
+    
+    
+}

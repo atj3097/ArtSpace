@@ -2,8 +2,8 @@
 //  MainTabVC.swift
 //  ArtSpaceDos
 //
-//  Created by Jocelyn Boyd on 2/6/20.
-//  Copyright © 2020 Jocelyn Boyd. All rights reserved.
+//  Created by Adam Jackson on 2/6/20.
+//  Copyright © 2020 Adam Jackson. All rights reserved.
 //
 
 import UIKit
@@ -13,22 +13,23 @@ class MainTabBarController: UITabBarController {
   
   //MARK: Properties
   lazy var homePage = UINavigationController(rootViewController: MainViewController())
-  lazy var createPost = UINavigationController(rootViewController: CreatePostViewController())
-  lazy var favorites = UINavigationController(rootViewController: SavedArtViewController())
   lazy var profile = UINavigationController(rootViewController: ProfileViewController())
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.tabBar.unselectedItemTintColor = .secondarySystemFill
+    self.tabBar.tintColor = .white
+    self.tabBar.backgroundColor = ArtSpaceConstants.artSpaceBlue
+    tabBar.barTintColor = ArtSpaceConstants.artSpaceBlue
     setTabItems()
   }
   
   private func setTabItems() {
     homePage.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house.fill"), tag: 0)
-    createPost.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "plus"), tag: 1)
-    favorites.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "heart.fill"), tag: 2)
+    homePage.tabBarItem.badgeColor = .red
     profile.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "person"), tag: 3)
     
-    self.viewControllers  = [homePage, createPost, favorites, profile]
+    self.viewControllers  = [homePage, profile]
   }
 }

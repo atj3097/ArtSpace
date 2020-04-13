@@ -131,10 +131,25 @@ class CreatePostViewController: UIViewController {
         super.viewDidLoad()
         UIUtilities.setViewBackgroundColor(view)
         setupNavigationBar()
+        setUpNavigationButtons()
         addSubviews()
         setUpConstraints()
         dismissKeyboardWithTap()
         getCurrentUser()
+    }
+    
+    private func setUpNavigationButtons() {
+        let button = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(postToFirebase))
+        self.navigationItem.rightBarButtonItem = button
+        let cancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissView))
+        self.navigationItem.leftBarButtonItem = cancel
+    }
+    
+    @objc private func postToFirebase() {
+        
+    }
+    @objc private func dismissView() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     //MARK: - Obj-C Functions
