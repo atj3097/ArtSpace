@@ -40,6 +40,7 @@ class ArtCell: UICollectionViewCell {
         super.init(frame: frame)
         addSubViews()
         addConstraints()
+        setupContentView()
     }
     
     required init?(coder: NSCoder) {
@@ -47,7 +48,13 @@ class ArtCell: UICollectionViewCell {
     }
     
 //    MARK: - ObjC Functions
-    
+    func setupContentView() {
+      contentView.backgroundColor = .systemGray2
+      contentView.layer.shadowColor = UIColor(red: 35/255, green: 46/255, blue: 33/255, alpha: 1).cgColor
+      contentView.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+      contentView.layer.shadowOpacity = 0.9
+      contentView.layer.shadowRadius = 4
+    }
     @objc private func likeButtonPressed(sender: UIButton!) {
         delegate?.faveArtObject(tag: sender.tag)
         if likeButton.image(for: .normal) == UIImage(systemName: "heart") {

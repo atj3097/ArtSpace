@@ -21,7 +21,7 @@ class MainViewController: UIViewController {
   lazy var artCollectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout.init()
     let collectionView = UICollectionView(frame:.zero , collectionViewLayout: layout)
-    layout.scrollDirection = .vertical
+    layout.scrollDirection = .horizontal
     layout.itemSize = CGSize(width: 250, height: 250)
     collectionView.register(ArtCell.self, forCellWithReuseIdentifier: ReuseIdentifier.artCell.rawValue)
     UIUtilities.setViewBackgroundColor(collectionView)
@@ -163,7 +163,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     let screenWidth = UIScreen.main.bounds.width
     let screenheight = UIScreen.main.bounds.height
     
-    return CGSize(width: (screenWidth - (cellSpacing * numSpaces)) / numCells, height: screenheight / 4)
+    return CGSize(width: screenWidth, height: screenheight / 1.5)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
