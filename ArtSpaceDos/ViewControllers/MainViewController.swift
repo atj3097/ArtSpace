@@ -83,6 +83,12 @@ class MainViewController: UIViewController {
     let filterButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(transitionToFilterVC))
     UIUtilities.setUpNavigationBar(title: "ArtSpace", viewController: self, leftBarButton: filterButton)
   }
+    
+    @objc private func profileTransition() {
+        let viewController = ProfileViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+        
   
   private func showAlert(with title: String, and message: String) {
     let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)

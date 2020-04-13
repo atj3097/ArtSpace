@@ -12,6 +12,7 @@ import Photos
 import Firebase
 import Kingfisher
 import Stripe
+
 class ProfileViewController: UIViewController {
     
     let profileOptions: [String: (UIImage, String)] = ["Saved Art": (UIImage(systemName: "bookmark")!, "See Your Favorite Art"), "Billing Info": (UIImage(systemName: "creditcard.fill")!, "Save A New Card Or Change Address"), "Purchase History": (UIImage(systemName: "book.fill")!, "See What You Bought!"), "Edit Profile": (UIImage(systemName: "person")!, "Customize Your Profile")]
@@ -527,7 +528,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profileOptions.count + 1
+        return profileOptions.count + 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -550,11 +551,47 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case 4:
             cell.title.text = "Post Your Own Art To Sell"
             cell.trashIcon.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+        case 5:
+            cell.title.text = "Logout"
         default:
             print("")
         }
- 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            let viewController = SavedArtViewController()
+            present(viewController, animated: true, completion: nil)
+        case 1:
+            let config = STPPaymentConfiguration()
+            config.requiredBillingAddressFields = .full
+            let theme = STPTheme.default()
+            theme.accentColor = ArtSpaceConstants.artSpaceBlue
+            theme.primaryBackgroundColor = .white
+            theme.barStyle = .black
+            let viewController = SaveCardViewController(configuration: config, theme: theme)
+            let navigationController = UINavigationController(rootViewController: viewController)
+            navigationController.navigationBar.stp_theme = theme
+            
+            navigationController.navigationBar.barStyle = .black
+            present(navigationController, animated: true, completion: nil)
+        case 2:
+            print("Purchase History")
+        case 3:
+            print("Edit Profile")
+        case 4:
+            let postController = PostArtViewController()
+            present(postController, animated: true, completion: nil)
+        case 5:
+            FirebaseAuthService.manager.logoutUser()
+            let loginPage = LoginViewController()
+            self.navigationController?.pushViewController(loginPage, animated: true)
+            self.tabBarController?.dismiss(animated: true, completion: nil)
+        default:
+            print("")
+        }
     }
     
     

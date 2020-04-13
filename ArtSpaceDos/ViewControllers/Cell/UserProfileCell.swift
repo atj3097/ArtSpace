@@ -62,6 +62,8 @@ class UserProfileCell: UITableViewCell {
           super.init(style: style, reuseIdentifier: reuseIdentifier)
           addSubviews()
           constraints()
+        selectionStyle = .none
+        layer.borderColor = ArtSpaceConstants.artSpaceBlue.cgColor
       }
       
       required init?(coder: NSCoder) {
