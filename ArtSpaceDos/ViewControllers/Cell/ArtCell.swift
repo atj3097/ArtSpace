@@ -12,16 +12,35 @@ import SnapKit
 class ArtCell: UICollectionViewCell {
     
     weak var delegate: ArtCellFavoriteDelegate?
-    
+    var currentArtObject: ArtObject!
     lazy var imageView: UIImageView = {
         let imgView = UIImageView()
         return imgView
     }()
+    
+    lazy var titleOfArt: UILabel = {
+        let label = UILabel()
+        UIUtilities.setUILabel(label, labelTitle: "", size: 30, alignment: .left)
+        label.textColor = ArtSpaceConstants.artSpaceBlue
+        label.numberOfLines = 0
+        label.font = UIFont(name: "Avenir", size: 30)
+        label.font = UIFont.boldSystemFont(ofSize: 30)
+        return label
+    }()
     lazy var priceLabel: UILabel = {
         var label = UILabel()
-        label.textColor = .black
-        label.backgroundColor = .white
+        UIUtilities.setUILabel(label, labelTitle: "", size: 30, alignment: .right)
+        label.textColor = ArtSpaceConstants.artSpaceBlue
+        label.font = UIFont(name: "Avenir", size: 30)
+        label.font = UIFont.boldSystemFont(ofSize: 30)
         return label
+    }()
+    
+    lazy var informationView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.alpha = 0.9
+        return view
     }()
     
     lazy var likeButton: UIButton = {
@@ -40,7 +59,8 @@ class ArtCell: UICollectionViewCell {
         super.init(frame: frame)
         addSubViews()
         addConstraints()
-        setupContentView()  
+        setupContentView()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -69,6 +89,8 @@ class ArtCell: UICollectionViewCell {
         contentView.addSubview(imageView)
         contentView.addSubview(priceLabel)
         contentView.addSubview(likeButton)
+        contentView.addSubview(informationView)
+        contentView.addSubview(titleOfArt)
     }
     
     func addConstraints() {
@@ -80,15 +102,30 @@ class ArtCell: UICollectionViewCell {
             make.bottom.equalTo(contentView)
         }
         
-        priceLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView).offset(5)
-            make.right.equalTo(contentView).offset(-5)
-        }
-        
         likeButton.snp.makeConstraints { make in
             make.top.equalTo(contentView).offset(15)
             make.right.equalTo(contentView).offset(-5)
         }
+        
+        informationView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            informationView.leftAnchor.constraint(equalTo: leftAnchor),
+            informationView.rightAnchor.constraint(equalTo: rightAnchor),
+            informationView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            informationView.heightAnchor.constraint(equalToConstant: contentView.frame.height / 7)
+        ])
+        
+        titleOfArt.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleOfArt.leftAnchor.constraint(equalTo: leftAnchor),
+            titleOfArt.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+        
+        priceLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            priceLabel.rightAnchor.constraint(equalTo: rightAnchor,constant: -10),
+            priceLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
         
         
     }

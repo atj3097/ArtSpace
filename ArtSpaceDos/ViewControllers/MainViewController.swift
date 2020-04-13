@@ -121,6 +121,10 @@ extension MainViewController: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = artCollectionView.dequeueReusableCell(withReuseIdentifier: ReuseIdentifier.artCell.rawValue, for: indexPath) as? ArtCell else {return UICollectionViewCell()}
+
+    let currentArt = artObjectData[indexPath.row]
+    cell.titleOfArt.text = currentArt.sellerID
+    cell.priceLabel.text = "$\(currentArt.price)0"
     let currentImage = artObjectData[indexPath.row]
     let url = URL(string: currentImage.artImageURL)
     cell.imageView.kf.setImage(with: url)
