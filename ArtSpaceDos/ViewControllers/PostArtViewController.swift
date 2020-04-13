@@ -11,6 +11,17 @@
 import MaterialComponents.MaterialTextFields
 
 final class PostArtViewController: UIViewController {
+    
+    var image = UIImage() {
+           didSet {
+               self.artView.image = image
+           }
+       }
+    
+    var imageURL: URL? = nil
+    
+    var currentUser: AppUser? = nil
+    
         let scrollView = UIScrollView()
     lazy var photographyTag: TagButton = {
         let button = TagButton()
@@ -58,6 +69,13 @@ final class PostArtViewController: UIViewController {
         button.setTitleColor(ArtSpaceConstants.artSpaceBlue, for: .normal)
         return button
     }()
+    lazy var uploadButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .clear
+        button.addTarget(self, action: #selector(uploadButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
     lazy var tagTitle: UILabel = {
         let label = UILabel()
         UIUtilities.setUILabel(label, labelTitle: "Select The Tags Describing your Art", size: 15, alignment: .left)
@@ -152,18 +170,52 @@ final class PostArtViewController: UIViewController {
         
     }
     @objc func postToFirebase() {
+      guard let photoURL = imageURL else {return}
+            let photoURLString = "\(photoURL)"
+            
+            guard self.currentUser != nil else {showAlert(with: "Error", and: "No valid user"); return}
+                   
+            guard let artist = self.currentUser else {showAlert(with: "Error", and: "No valid user"); return}
+            
+            guard message.text != "", name.text != "", width.text != "", height.text != "", phone.text != "" else {showAlert(with: "Error", and: "Fill out all fields"); return}
+            
+            guard let description = message.text, let widthString = width.text, let heightString = height.text, let priceString = phone.text else {showAlert(with: "Error", and: "Invalid entry; check fields"); return}
+            
+            let priceDouble: Double? = Double((priceString as NSString).floatValue)
+            let widthCGFloat: CGFloat? = CGFloat((widthString as NSString).floatValue)
+            let heightCGFloat: CGFloat? = CGFloat((heightString as NSString).floatValue)
+            
+            if let price = priceDouble, let width = widthCGFloat, let height = heightCGFloat {
+                guard price != 0.0, width != 0.0, height != 0.0 else {showAlert(with: "Error", and: "Invalid entry; check fields"); return}
+                let newArtObject = ArtObject(artistName: artist.userName ?? "No artist name", artDescription: description, width: (width / 100) , height: (height / 100), artImageURL: photoURLString, sellerID: artist.uid, price: price, tags: ["2"])
+                
+                FirestoreService.manager.createArtObject(artObject: newArtObject) { (result) in
+                    switch result {
+                    case .failure(let error):
+                        print(error)
+                        self.showAlert(with: "Error", and: "Could not save item")
+                    case .success(()):
+                        self.showAlert(with: "Art Posted", and: "Now Available For Sale!")
+                    }
+                }
+            } else {
+                showAlert(with: "Error", and: "Invalid entry; check fields")
+            }
+        }
         
-    }
+        private func showAlert(with title: String, and message: String) {
+            let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alertVC, animated: true, completion: nil)
+            print("Submit Button Pressed. Data gets loaded intro Firebase")
+        }
 
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = ArtSpaceConstants.artSpaceBlue
-
-    navigationController?.navigationBar.isHidden = true
-
+    getCurrentUser()
     setupScrollView()
     setupTextFields()
-
     registerKeyboardNotifications()
     addGestureRecognizer()
 
@@ -173,6 +225,30 @@ final class PostArtViewController: UIViewController {
                                       action: #selector(buttonDidTouch(sender: )))
     self.navigationItem.rightBarButtonItem = styleButton
   }
+    
+    private func getCurrentUser() {
+        guard let user = FirebaseAuthService.manager.currentUser else {return}
+        
+        FirestoreService.manager.getCurrentAppUser(uid: user.uid) { (result) in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let user):
+                self.currentUser = user
+                
+            }
+        }
+        
+    }
+    
+    @objc func uploadButtonPressed() {
+        self.showActivityIndicator(shouldShow: true)
+        
+        let imagePickerVC = UIImagePickerController()
+        imagePickerVC.delegate = self
+        present(imagePickerVC, animated: true)
+    }
+    
 
   func setupTextFields() {
     scrollView.addSubview(pageTitle)
@@ -276,7 +352,8 @@ final class PostArtViewController: UIViewController {
                 pageTitle.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
             ])
             artView.translatesAutoresizingMaskIntoConstraints = false
-    
+    uploadButton.translatesAutoresizingMaskIntoConstraints = false
+    scrollView.addSubview(uploadButton)
             NSLayoutConstraint.activate([
                 artView.topAnchor.constraint(equalTo: pageTitle.bottomAnchor,constant: 5),
                 artView.leftAnchor.constraint(equalTo: self.view.leftAnchor,constant: 10),
@@ -284,6 +361,13 @@ final class PostArtViewController: UIViewController {
     
                 artView.heightAnchor.constraint(equalToConstant: view.frame.height / 5)
             ])
+    
+    NSLayoutConstraint.activate([
+        uploadButton.topAnchor.constraint(equalTo:artView.topAnchor),
+        uploadButton.leftAnchor.constraint(equalTo: artView.leftAnchor),
+        uploadButton.rightAnchor.constraint(equalTo: artView.rightAnchor),
+        uploadButton.bottomAnchor.constraint(equalTo:  artView.bottomAnchor)
+    ])
     
     NSLayoutConstraint.activate([
         name.topAnchor.constraint(equalTo: artView.topAnchor),
@@ -567,4 +651,34 @@ internal extension String {
   }
 }
 
+
+//MARK: - Extensions
+extension PostArtViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            return
+        }
+        self.image = image
+        
+        guard let imageData = image.jpegData(compressionQuality: 1.0) else {return}
+        //MARK: To Do - Refactor when Image is being saved
+        FirebaseStorageService.manager.storeImage(pictureType: .artPiece, image: imageData) { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let url):
+                self?.imageURL = url
+            }
+        }
+                
+        self.showActivityIndicator(shouldShow: false)
+
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.showActivityIndicator(shouldShow: false)
+        self.dismiss(animated: true, completion: nil)
+    }
+}
 
