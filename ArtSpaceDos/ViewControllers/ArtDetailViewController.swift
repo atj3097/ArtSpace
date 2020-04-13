@@ -49,14 +49,14 @@ class ArtDetailViewController: UIViewController {
     
     lazy var dimensionsLabel: UILabel = {
         let label = UILabel()
-        UIUtilities.setUILabel(label, labelTitle: "Size", size: 14, alignment: .center)
+        UIUtilities.setUILabel(label, labelTitle: "Size", size:  17, alignment: .center)
         label.textColor = ArtSpaceConstants.artSpaceBlue
         return label
     }()
     
     lazy var artistNameLabel: UILabel = {
         let label = UILabel()
-        UIUtilities.setUILabel(label, labelTitle: "", size: 15, alignment: .center)
+        UIUtilities.setUILabel(label, labelTitle: "", size: 20, alignment: .center)
         label.textColor = ArtSpaceConstants.artSpaceBlue
 //        label.font = UIFont(name: "", size: <#T##CGFloat#>)
         return label

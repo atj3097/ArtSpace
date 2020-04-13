@@ -87,10 +87,10 @@ class ArtCell: UICollectionViewCell {
     
     func addSubViews() {
         contentView.addSubview(imageView)
-        contentView.addSubview(priceLabel)
         contentView.addSubview(likeButton)
         contentView.addSubview(informationView)
         contentView.addSubview(titleOfArt)
+        contentView.addSubview(priceLabel)
     }
     
     func addConstraints() {
