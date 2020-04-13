@@ -570,7 +570,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             let theme = STPTheme.default()
             theme.accentColor = ArtSpaceConstants.artSpaceBlue
             theme.primaryBackgroundColor = .white
-            theme.barStyle = .black
+            theme.primaryForegroundColor = ArtSpaceConstants.artSpaceBlue
+            theme.secondaryBackgroundColor = .white
+        
             let viewController = SaveCardViewController(configuration: config, theme: theme)
             let navigationController = UINavigationController(rootViewController: viewController)
             navigationController.navigationBar.stp_theme = theme
