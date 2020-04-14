@@ -20,7 +20,7 @@ class HomePageViewController: UIViewController {
   lazy var artCollectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout.init()
     let collectionView = UICollectionView(frame:.zero , collectionViewLayout: layout)
-    layout.scrollDirection = .horizontal
+    layout.scrollDirection = .vertical
     layout.itemSize = CGSize(width: 250, height: 250)
     collectionView.register(ArtCell.self, forCellWithReuseIdentifier: ReuseIdentifier.artCell.rawValue)
     UIUtilities.setViewBackgroundColor(collectionView)
