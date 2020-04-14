@@ -106,26 +106,9 @@ class ArtDetailView: UIView {
         
     }
     private func commonInit() {
-        fillUIData()
         addSubviews()
         setupUIConstraints()
         backgroundColor = .white
-    }
-    
-    //MARK: Populate UI
-    
-    private func fillUIData() {
-        priceNameLabel.text = "Price: $\(currentArtObject.price)"
-        let heighMeasurement = Measurement(value: Double(currentArtObject.height), unit: UnitLength.meters)
-        let widthMeasurement = Measurement(value: Double(currentArtObject.width), unit: UnitLength.meters)
-        let centimeterWidth = heighMeasurement.converted(to: .centimeters)
-        let centimeterHeight = widthMeasurement.converted(to: .centimeters)
-        dimensionsLabel.text = "H x \(centimeterHeight) W x \(centimeterWidth)"
-        artistNameLabel.text = "Artist: @\(currentArtObject.artistName.lowercased())"
-        artDescription.text = "\(currentArtObject.artDescription)"
-        let url = URL(string: currentArtObject.artImageURL)
-        artImageView.kf.setImage(with: url)
-        buyNowButton.setTitle("$\(currentArtObject.price)0", for: .normal)
     }
     
     
@@ -161,7 +144,6 @@ class ArtDetailView: UIView {
     }
     
     private func constrainArtView() {
-        artName.text = currentArtObject.sellerID
         artName.snp.makeConstraints{ make in
             make.top.equalTo(self).offset(60)
             make.centerX.equalTo(self)
