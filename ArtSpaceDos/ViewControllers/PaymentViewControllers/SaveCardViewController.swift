@@ -15,7 +15,6 @@ class SaveCardViewController: STPAddCardViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationButtons()
-        
     }
     private func setUpNavigationButtons() {
         let button = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveCard))
@@ -26,7 +25,7 @@ class SaveCardViewController: STPAddCardViewController {
     
     @objc func saveCard() {
         let cardParams = STPCardParams()
-        cardParams.name = "Alissa Semple"
+        cardParams.name = "Test Name"
         cardParams.number = "4242424242424242"
         cardParams.expMonth = 04
         cardParams.expYear = 23

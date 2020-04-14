@@ -15,7 +15,6 @@ import Stripe
 
 class ProfileViewController: UIViewController {
     
-    let profileOptions: [String: (UIImage, String)] = ["Saved Art": (UIImage(systemName: "bookmark")!, "See Your Favorite Art"), "Billing Info": (UIImage(systemName: "creditcard.fill")!, "Save A New Card Or Change Address"), "Purchase History": (UIImage(systemName: "book.fill")!, "See What You Bought!"), "Edit Profile": (UIImage(systemName: "person")!, "Customize Your Profile")]
     var displayNameHolder = "Display Name"
     var defaultImage = UIImage(systemName: "1")
     var settingFromLogin = false
@@ -145,17 +144,7 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
-    
-    lazy var savePaymentInformation: UIButton = {
-        let button = UIButton()
-        button.setTitleColor(.systemBlue, for: .normal)
-        UIUtilities.setUpButton(button, title: "Save Card", backgroundColor: .white, target: self, action: #selector(stripeSaveCard))
-        button.layer.borderWidth = 2.0
-               button.layer.cornerRadius = 15
-               button.layer.borderColor = UIColor.systemBlue.cgColor
-        return button
-    }()
-    
+
     lazy var backgroundImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "profileBackground")
@@ -168,13 +157,8 @@ class ProfileViewController: UIViewController {
         view.addSubview(profileImage)
         view.addSubview(buyerOrSeller)
         view.addSubview(numberOfPosts)
-        // view.addSubview(uploadButton)
-//        view.addSubview(uploadImageButton)
-//        view.addSubview(saveButton)
          view.addSubview(userNameLabel)
-//        view.addSubview(textField)
         view.addSubview(editDisplayNameButton)
-//        view.addSubview(savePaymentInformation)
     }
     //MARK:ViewDidLoad cycle
     override func viewDidLoad() {
@@ -305,12 +289,6 @@ class ProfileViewController: UIViewController {
         present(alertVC, animated: true, completion: nil)
     }
     
-    @objc private func stripeSaveCard() {
-        let saveCardVC = SaveCardViewController()
-        saveCardVC.modalPresentationStyle = .overCurrentContext
-        present(saveCardVC, animated: true, completion: nil)
-        
-    }
     @objc private func profileImageTapped(){
         print("Pressed")
         
@@ -339,8 +317,6 @@ class ProfileViewController: UIViewController {
         //King Fisher
         let url = URL(string:imageUrl.absoluteString)
         profileImage.kf.setImage(with: url)
-        
-        
     }
     
     private func presentPhotoPickerController() {
@@ -352,6 +328,22 @@ class ProfileViewController: UIViewController {
             imagePickerViewController.mediaTypes = ["public.image", "public.movie"]
             self.present(imagePickerViewController, animated: true, completion: nil)
         }
+    }
+    
+   func presentSaveCardController() {
+        let config = STPPaymentConfiguration()
+        config.requiredBillingAddressFields = .full
+        let theme = STPTheme.default()
+        theme.accentColor = ArtSpaceConstants.artSpaceBlue
+        theme.primaryBackgroundColor = .white
+        theme.primaryForegroundColor = ArtSpaceConstants.artSpaceBlue
+        theme.secondaryBackgroundColor = .white
+        let viewController = SaveCardViewController(configuration: config, theme: theme)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.navigationBar.stp_theme = theme
+        
+        navigationController.navigationBar.barStyle = .black
+        present(navigationController, animated: true, completion: nil)
     }
     
     @objc private func updateButtonPressed(){
@@ -468,133 +460,6 @@ class ProfileViewController: UIViewController {
             make.bottom.equalTo(profileImage).offset(75)
             make.left.equalTo(profileImage).offset(10)
         }
-//        view.addSubview(artPurchased)
-//        artPurchased.snp.makeConstraints({ (make) in
-//            make.top.equalTo(numberOfPosts)
-//            make.centerX.equalTo(view)
-//        })
     }
- 
-    
-    private func saveCardConstraints() {
-        savePaymentInformation.snp.makeConstraints{ make in
-            make.bottom.equalTo(saveButton).offset(50)
-            make.centerX.equalTo(saveButton)
-            make.width.equalTo(saveButton)
-            make.height.equalTo(saveButton)
-        }
-    }
-    
-}
-
-//MARK: Extension
-extension ProfileViewController:UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        guard let selectedImage = info[.editedImage] as? UIImage else {
-            return
-        }
-        
-        self.savedImage = selectedImage
-        
-        guard let imageData = selectedImage.jpegData(compressionQuality: 0.7) else {
-            return
-        }
-        
-        FirebaseStorageService.manager.storeImage(pictureType: .profilePicture, image: imageData, completion: { [weak self] (result) in
-            switch result{
-            case .success(let url):
-                print("working")
-                print(result)
-                self?.imageURL = url
-                
-            case .failure(let error):
-                print("Notworking")
-                print(error)
-            }
-        })
-        self.activityIndicator.stopAnimating()
-        picker.dismiss(animated: true, completion: nil)
-    }
-}
-extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profileOptions.count + 2
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         guard let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as? UserProfileCell else {return UITableViewCell()}
-        cell.backgroundColor = .clear
-        switch indexPath.row {
-        case 0:
-            cell.title.text = "Saved Art"
-            cell.numberOfTimes.text = profileOptions["Save Art"]?.1
-            cell.trashIcon.setImage(UIImage(systemName: "bookmark"), for: .normal)
-        case 1:
-            cell.title.text = "Billing Information"
-            cell.trashIcon.setImage(UIImage(systemName: "creditcard.fill"), for: .normal)
-        case 2:
-            cell.title.text = "Purchase History"
-            cell.trashIcon.setImage(UIImage(systemName: "book"), for: .normal)
-        case 3:
-            cell.title.text = "Edit Profile"
-            cell.trashIcon.setImage(UIImage(systemName: "person.fill"), for: .normal)
-        case 4:
-            cell.title.text = "Post Your Own Art To Sell"
-            cell.trashIcon.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
-        case 5:
-            cell.title.text = "Logout"
-        default:
-            print("")
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            let viewController = SavedArtViewController()
-            present(viewController, animated: true, completion: nil)
-        case 1:
-            let config = STPPaymentConfiguration()
-            config.requiredBillingAddressFields = .full
-            let theme = STPTheme.default()
-            theme.accentColor = ArtSpaceConstants.artSpaceBlue
-            theme.primaryBackgroundColor = .white
-            theme.primaryForegroundColor = ArtSpaceConstants.artSpaceBlue
-            theme.secondaryBackgroundColor = .white
-        
-            let viewController = SaveCardViewController(configuration: config, theme: theme)
-            let navigationController = UINavigationController(rootViewController: viewController)
-            navigationController.navigationBar.stp_theme = theme
-            
-            navigationController.navigationBar.barStyle = .black
-            present(navigationController, animated: true, completion: nil)
-        case 2:
-            print("Purchase History")
-        case 3:
-            print("Edit Profile")
-        case 4:
-            let postController = PostArtViewController()
-            present(postController, animated: true, completion: nil)
-        case 5:
-            FirebaseAuthService.manager.logoutUser()
-            let loginPage = LoginViewController()
-            self.navigationController?.pushViewController(loginPage, animated: true)
-            self.tabBarController?.dismiss(animated: true, completion: nil)
-        default:
-            print("")
-        }
-    }
-    
     
 }

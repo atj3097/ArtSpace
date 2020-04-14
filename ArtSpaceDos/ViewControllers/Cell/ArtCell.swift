@@ -13,6 +13,7 @@ class ArtCell: UICollectionViewCell {
     
     weak var delegate: ArtCellFavoriteDelegate?
     var currentArtObject: ArtObject!
+    
     lazy var imageView: UIImageView = {
         let imgView = UIImageView()
         return imgView
@@ -53,27 +54,26 @@ class ArtCell: UICollectionViewCell {
         button.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
         return button
     }()
-
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubViews()
         addConstraints()
         setupContentView()
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    MARK: - ObjC Functions
+    
     func setupContentView() {
-      contentView.backgroundColor = .systemGray2
-      contentView.layer.shadowColor = UIColor(red: 35/255, green: 46/255, blue: 33/255, alpha: 1).cgColor
-      contentView.layer.shadowOffset = CGSize(width: 0, height: 1.0)
-      contentView.layer.shadowOpacity = 0.9
-      contentView.layer.shadowRadius = 4
+        contentView.backgroundColor = .systemGray2
+        contentView.layer.shadowColor = UIColor(red: 35/255, green: 46/255, blue: 33/255, alpha: 1).cgColor
+        contentView.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        contentView.layer.shadowOpacity = 0.9
+        contentView.layer.shadowRadius = 4
     }
     @objc private func likeButtonPressed(sender: UIButton!) {
         delegate?.faveArtObject(tag: sender.tag)

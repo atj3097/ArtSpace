@@ -7,14 +7,9 @@
 //
 
 import UIKit
-import SnapKit
 import FirebaseAuth
-import Stripe
-//MARK: Add Activity Indicator
-//MARK: Change Font color on whether or not its been selected
 
 class LoginViewController: UIViewController {
-    
     private enum SignInMethod {
         case logIn
         case register
@@ -45,8 +40,6 @@ class LoginViewController: UIViewController {
         sc.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         sc.addTarget(self, action: #selector(segmentedControlChanged(_:)), for: .valueChanged)
         sc.tintColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
-        
-        
         return sc
     }()
     
@@ -99,7 +92,6 @@ class LoginViewController: UIViewController {
         button.layer.shadowColor = UIColor.darkGray.cgColor
         button.layer.masksToBounds = false
         button.layer.shadowOpacity = 0.5
-        
         return button
     }()
     
@@ -109,10 +101,11 @@ class LoginViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         view.backgroundColor = .black
         dismissKeyboardWithTap()
-        UIUtilities.addSubViews([gifView,titleLabel,emailTextField,passwordTextField,loginButton, segmentedControl,usernameTextField], parentController: self)
+    UIUtilities.addSubViews([gifView,titleLabel,emailTextField,passwordTextField,loginButton, segmentedControl,usernameTextField], parentController: self)
         usernameTextField.isHidden = true
         setUpConstraints()
     }
+    
     //MARK: Objective C
     @objc func loginOrRegisterUser() {
       self.showActivityIndicator(shouldShow: true)
@@ -156,141 +149,22 @@ class LoginViewController: UIViewController {
         }
     }
     
-    //MARK: Private Function
+    @objc func dismissKeyboard() {
+         view.endEditing(true)
+       }
+    
+
     private func dismissKeyboardWithTap() {
       let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
       view.addGestureRecognizer(tap)
     }
     
-    @objc func dismissKeyboard() {
-      view.endEditing(true)
-    }
-    
-    private func handleLoginAccountResponse(with result: Result<(), Error>) {
-        DispatchQueue.main.async {
-            switch result {
-            case .failure(let error):
-                self.showAlert(with: "Error", and: "Could not log in. Error: \(error)")
-            case .success:
-                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                    let sceneDelegate = windowScene.delegate as? SceneDelegate
-                    else {
-                        return
-                }
-                UIView.transition(with: self.view, duration: 0.1, options: .transitionFlipFromBottom, animations: {
-                  let mainViewController = MainTabBarController()
-                    mainViewController.modalPresentationStyle = .overCurrentContext
-                    sceneDelegate.window?.rootViewController = mainViewController
-                }, completion: nil)
-            }
-        }
-    }
-    private func handleCreateAccountResponse(with result: Result<User, Error>) {
-        DispatchQueue.main.async {
-            switch result {
-            case .success(let user):
-                FirestoreService.manager.createAppUser(user: AppUser(from: user, stripeId: "" )) { [weak self] newResult in
-                    self?.addUserNameToUser(with: newResult)
-             
-                }
-            case .failure(let error):
-                self.showAlert(with: "Error creating user", and: "An error occured while creating new account \(error)")
-            }
-        }
-    }
-    
-    private func addUserNameToUser (with result: Result<Void, Error>) {
-        DispatchQueue.main.async {
-            switch result {
-            case .success( _):
-                FirestoreService.manager.updateCurrentUser(userName: self.usernameTextField.text ?? "", completion: { (result) in
-                    self.handleCreatedUserInFirestore(result: result)
-                })
-         
-//                FirestoreService.manager.updateStripeId(completion: {(result) in
-//                    switch result {
-//                    case .success(()):
-//                        print("Success")
-//                    case .failure(let error):
-//                        print(error)
-//                    }
-//                })
-            case .failure(let error):
-                self.showAlert(with: "Error creating user", and: "An error occured while creating new account \(error)")
-            }
-        }
-    }
-    
-    private func handleCreatedUserInFirestore(result: Result<Void, Error>) {
-        switch result {
-        case .success:
-            let tabBarController = MainTabBarController()
-            tabBarController.modalPresentationStyle = .overCurrentContext
-            self.present(tabBarController, animated: true, completion: nil)
-        case .failure(let error):
-            self.showAlert(with: "Error creating user", and: "An error occured while creating new account \(error)")
-        }
-    }
-
-    private func showAlert(with title: String, and message: String) {
+   
+   
+  func showAlert(with title: String, and message: String) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alertVC, animated: true, completion: nil)
     }
 
-    // MARK: - Constraints
-    
-    func setUpConstraints() {
-        gifView.snp.makeConstraints{ make in
-            make.height.equalTo(view)
-            make.width.equalTo(view).offset(100)
-        }
-        
-        titleLabel.snp.makeConstraints{ make in
-            make.top.equalTo(view).offset(50)
-            make.centerX.equalTo(view)
-        }
-        
-        segmentedControl.snp.makeConstraints { make in
-            make.top.equalTo(view).offset(125)
-            make.centerX.equalTo(view)
-            make.height.equalTo(30)
-            make.width.equalTo(175)
-        }
-        
-        emailTextField.snp.makeConstraints{ make in
-            make.top.equalTo(titleLabel).offset(150)
-            make.centerX.equalTo(view)
-            make.width.equalTo(titleLabel).offset(100)
-            make.height.equalTo(40)
-        }
-        
-        usernameTextField.snp.makeConstraints{ make in
-            make.top.equalTo(emailTextField).offset(50)
-            make.width.equalTo(emailTextField)
-            make.centerX.equalTo(view)
-            make.height.equalTo(40)
-            
-        }
-        
-        passwordTextField.snp.makeConstraints{ make in
-            make.top.equalTo(emailTextField).offset(100)
-            make.centerX.equalTo(view)
-            make.width.equalTo(titleLabel).offset(100)
-            make.height.equalTo(40)
-        }
-
-        loginButton.snp.makeConstraints{ make in
-            make.top.equalTo(passwordTextField).offset(100)
-            make.centerX.equalTo(view)
-            make.width.equalTo(250)
-            make.height.equalTo(40)
-        }
-    }
-}
-
-
-//MARK: UI Constants
-struct ArtSpaceConstants{
-    static var artSpaceBlue = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
 }
