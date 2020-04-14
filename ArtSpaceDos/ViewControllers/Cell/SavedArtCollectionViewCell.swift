@@ -27,7 +27,7 @@ class SavedArtCollectionViewCell: UICollectionViewCell {
         let button = UIButton()
         let imageConfig = UIImage.SymbolConfiguration(scale: .large)
         button.setImage(UIImage(systemName: "heart.fill", withConfiguration: imageConfig), for: .normal)
-        button.tintColor = .systemBlue
+        button.tintColor = .white
         button.layer.backgroundColor = UIColor.clear.cgColor
         button.addTarget(self, action: #selector(bookmarkButtonPressed), for: .touchUpInside)
         return button
@@ -45,15 +45,17 @@ class SavedArtCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Artist"
         label.font = UIFont(descriptor: .preferredFontDescriptor(withTextStyle: .caption1), size: 16)
-        label.textColor = .black
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
     
     lazy var priceLabel: UILabel = {
         let label = UILabel()
-        label.text = "Price"
+        label.text = ""
         label.font = UIFont(descriptor: .preferredFontDescriptor(withTextStyle: .caption1), size: 16)
-        label.textColor = .black
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
     
@@ -105,7 +107,7 @@ class SavedArtCollectionViewCell: UICollectionViewCell {
     //MARK: Functions
     
     func setupContentView() {
-        contentView.backgroundColor = .systemGray2
+        contentView.backgroundColor = ArtSpaceConstants.artSpaceBlue
         contentView.layer.shadowColor = UIColor(red: 35/255, green: 46/255, blue: 33/255, alpha: 1).cgColor
         contentView.layer.shadowOffset = CGSize(width: 0, height: 1.0)
         contentView.layer.shadowOpacity = 0.9
@@ -166,7 +168,7 @@ class SavedArtCollectionViewCell: UICollectionViewCell {
         }
         
         titleLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(savedImageView).offset(25)
+            make.bottom.equalTo(savedImageView).offset(16)
             make.left.equalTo(contentView).offset(25)
         }
         

@@ -30,8 +30,8 @@ class ShippingAddressViewController: STPShippingAddressViewController {
     
     @objc private func makePayment() {
         FirestoreService.manager.createCharge(amount: price)
-        showAlert(with: "Thank You For Your Purchase!", and: "Oue Shipping and Handling Takes About 7 Days 😊")
-        dismiss(animated: true, completion: nil)
+        showAlert(with: "Thank You For Your Purchase!", and: "Our Shipping and Handling Takes About 7 Days 😊")
+
     }
     private func showAlert(with title: String, and message: String) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
