@@ -9,9 +9,9 @@ ArtSpace is an immersive app where users can browse art available for sale and e
 ## Features
 #### Augemented reatlity shopping experience. 
 ![](aumentedReality.gif)
-- Shopping as easy as a scroll in the park. 
-### In-app pruchases Using Stripe
-![](paymentgIF.gif)
+#### In-app pruchases Using Stripe
+![](paymentgIF.gif) 
+#### Save Your Card Information 
 ## Technology Stack
 - ARKit
 - Stripe
