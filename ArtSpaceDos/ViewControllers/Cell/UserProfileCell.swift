@@ -11,8 +11,10 @@ import UIKit
 import UIKit
 
 class UserProfileCell: UITableViewCell {
+    
     var currentItemId: Int?
     var parentViewController: UIViewController?
+    
     lazy var recipeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
@@ -31,7 +33,7 @@ class UserProfileCell: UITableViewCell {
         return label
     }()
     
-    lazy var numberOfTimes: UILabel = {
+    lazy var moreInformation: UILabel = {
         let label = UILabel()
         UIUtilities.setUILabel(label, labelTitle: "", size: 30, alignment: .center)
         label.textColor = .white
@@ -49,11 +51,9 @@ class UserProfileCell: UITableViewCell {
         return view
     }()
     
-    lazy var trashIcon: UIButton = {
+    lazy var cellIcon: UIButton = {
         let button = UIButton()
-        UIUtilities.setUpButton(button, title: "", backgroundColor: .clear, target: self, action: #selector(removeFromCart))
-//        let image = UIImage(systemName: "trash")
-//        button.setImage(image, for: .normal)
+        UIUtilities.setUpButton(button, title: "", backgroundColor: .clear, target: self, action: #selector(testFunction))
         button.tintColor = ArtSpaceConstants.artSpaceBlue
         return button
     }()
@@ -78,17 +78,16 @@ class UserProfileCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
-    @objc func removeFromCart() {
-        showAlert(with: "Swipe Right To Delete this Item", and: "", parentController: parentViewController!)
+    
+    @objc func testFunction() {
+        
     }
+
     private func addSubviews() {
-//        addSubview(greenLayer)
-        addSubview(recipeImageView)
         addSubview(title)
-        addSubview(numberOfTimes)
-        addSubview(trashIcon)
+        addSubview(moreInformation)
+        addSubview(cellIcon)
     }
     
     private func showAlert(with title: String, and message: String, parentController: UIViewController) {
@@ -98,29 +97,12 @@ class UserProfileCell: UITableViewCell {
     }
     
     private func constraints() {
-//        greenLayer.translatesAutoresizingMaskIntoConstraints = false
-        recipeImageView.translatesAutoresizingMaskIntoConstraints = false
-        recipeImageView.addSubview(greenLayer)
+        
         title.translatesAutoresizingMaskIntoConstraints = false
-        numberOfTimes.translatesAutoresizingMaskIntoConstraints = false
-        trashIcon.translatesAutoresizingMaskIntoConstraints = false
-//
-//        NSLayoutConstraint.activate([
-//            greenLayer.leadingAnchor.constraint(equalTo: recipeImageView.leadingAnchor),
-//            greenLayer.topAnchor.constraint(equalTo: recipeImageView.topAnchor),
-//            greenLayer.bottomAnchor.constraint(equalTo: recipeImageView.bottomAnchor),
-//            greenLayer.trailingAnchor.constraint(equalTo: recipeImageView.trailingAnchor)
-//        ])
-        
-        
-        //Recipe Image
-        NSLayoutConstraint.activate([
-            recipeImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            recipeImageView.topAnchor.constraint(equalTo: topAnchor),
-            recipeImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            recipeImageView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-        
+        moreInformation.translatesAutoresizingMaskIntoConstraints = false
+        cellIcon.translatesAutoresizingMaskIntoConstraints = false
+
+
         NSLayoutConstraint.activate([
             title.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
             title.heightAnchor.constraint(equalToConstant: 30),
@@ -128,22 +110,19 @@ class UserProfileCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            numberOfTimes.centerXAnchor.constraint(equalTo: centerXAnchor),
-            numberOfTimes.leadingAnchor.constraint(equalTo: leadingAnchor),
-            numberOfTimes.trailingAnchor.constraint(equalTo: trailingAnchor),
-            numberOfTimes.heightAnchor.constraint(equalToConstant: self.frame.height / 0.5),
-            numberOfTimes.topAnchor.constraint(equalTo: title.bottomAnchor)
+            moreInformation.centerXAnchor.constraint(equalTo: centerXAnchor),
+            moreInformation.leadingAnchor.constraint(equalTo: leadingAnchor),
+            moreInformation.trailingAnchor.constraint(equalTo: trailingAnchor),
+            moreInformation.heightAnchor.constraint(equalToConstant: self.frame.height / 0.5),
+            moreInformation.topAnchor.constraint(equalTo: title.bottomAnchor)
         ])
         
         NSLayoutConstraint.activate([
-           trashIcon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+           cellIcon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
            
-           trashIcon.topAnchor.constraint(equalTo: topAnchor,constant: 10)
+           cellIcon.topAnchor.constraint(equalTo: topAnchor,constant: 10)
             
         ])
-        
-        
-        
     }
 
 }

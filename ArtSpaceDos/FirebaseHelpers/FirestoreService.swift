@@ -33,7 +33,7 @@ class FirestoreService {
     
     private let database = Firestore.firestore()
     
-//    MARK: - AppUser Methods
+    //    MARK: - AppUser Methods
     func createAppUser(user: AppUser, completion: @escaping (Result<(), Error>) -> ()) {
         var fields: [String: Any] = user.fieldsDict
         fields["dateCreated"] = Date()
@@ -45,10 +45,6 @@ class FirestoreService {
         }
     }
     
-    
-    
-    
-    
     func updateCurrentUser(userName: String? = nil, photoURL: URL? = nil, completion: @escaping (Result<(), Error>) -> ()) {
         guard let userID = FirebaseAuthService.manager.currentUser?.uid else {return}
         
@@ -57,28 +53,8 @@ class FirestoreService {
             updateFields["userName"] = user
         }
         if let photo = photoURL {
-                 updateFields["photoURL"] = photo.absoluteString
-             }
-        database.collection(FirestoreCollections.AppUser.rawValue).document(userID).updateData(updateFields) { (error) in
-            if let error = error {
-                completion(.failure(error))
-            }
-            completion(.success(()))
+            updateFields["photoURL"] = photo.absoluteString
         }
-         
-    }
-    func updateStripeId(completion: @escaping (Result<(), Error>) -> ()) {
-        guard let userID = FirebaseAuthService.manager.currentUser?.uid else {return}
-        
-        var updateFields = [String:Any]()
-        database.collection(FirestoreCollections.stripe_customers.rawValue).getDocuments { (snapshot, error) in
-            if let error = error {
-                print(error)
-            }
-            let stripeId = snapshot?.documents.last?.documentID
-            updateFields["stripeCustomerId"] = stripeId
-        }
-       print(updateFields)
         database.collection(FirestoreCollections.AppUser.rawValue).document(userID).updateData(updateFields) { (error) in
             if let error = error {
                 completion(.failure(error))
@@ -86,8 +62,39 @@ class FirestoreService {
             completion(.success(()))
         }
         
-         
     }
+
+    
+    func getCurrentAppUser(uid: String, completion: @escaping (Result<AppUser, Error>) -> ()) {
+        database.collection(FirestoreCollections.AppUser.rawValue).document(uid).getDocument { (snapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else if let snapshot = snapshot, let data = snapshot.data() {
+                let userID = snapshot.documentID
+                let user = AppUser(from: data, id: userID)
+                completion(.success(user!))
+            }
+        }
+    }
+    
+    func getAllUsers(completion: @escaping (Result<[AppUser], Error>) -> ()) {
+        
+        database.collection(FirestoreCollections.AppUser.rawValue).getDocuments { (snapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                let users = snapshot?.documents.compactMap({ (snapshot) -> AppUser? in
+                    let userID = snapshot.documentID
+                    let user = AppUser(from: snapshot.data(), id: userID)
+                    return user
+                })
+                completion(.success(users ?? []))
+            }
+        }
+        
+        
+    }
+    //MARK: Stripe Methods
     func saveToken(tokenId: String) {
         guard let userID = FirebaseAuthService.manager.currentUser?.uid else {return}
         var updated = [String: Any]()
@@ -101,6 +108,7 @@ class FirestoreService {
     }
     
     func createCharge(amount: Int) {
+        //Converting the current art pieces price into pennies
         var pennies = amount * 100
         
         var updated = [String: Any]()
@@ -110,38 +118,7 @@ class FirestoreService {
         
     }
     
-    func getCurrentAppUser(uid: String, completion: @escaping (Result<AppUser, Error>) -> ()) {
- database.collection(FirestoreCollections.AppUser.rawValue).document(uid).getDocument { (snapshot, error) in
-            if let error = error {
-                completion(.failure(error))
-            } else if let snapshot = snapshot, let data = snapshot.data() {
-                let userID = snapshot.documentID
-                let user = AppUser(from: data, id: userID)
-                completion(.success(user!))
-            }
-        }
-    }
-    
-    func getAllUsers(completion: @escaping (Result<[AppUser], Error>) -> ()) {
-       
-            database.collection(FirestoreCollections.AppUser.rawValue).getDocuments { (snapshot, error) in
-                if let error = error {
-                    completion(.failure(error))
-                } else {
-                    let users = snapshot?.documents.compactMap({ (snapshot) -> AppUser? in
-                        let userID = snapshot.documentID
-                        let user = AppUser(from: snapshot.data(), id: userID)
-                        return user
-                    })
-                    completion(.success(users ?? []))
-                }
-            }
-        
-        
-    }
-    
-   
-//    MARK: - ArtObject Methods
+    //    MARK: - ArtObject Methods
     
     func createArtObject(artObject: ArtObject, completion: @ escaping (Result<(), Error>) -> ()) {
         var fields: [String:Any] = artObject.fieldsDict
@@ -171,7 +148,7 @@ class FirestoreService {
     }
     
     func updateArtObjectSoldStatus(newStatus: Bool?, artID: String, completion: @escaping (Result<(), Error>) -> ()) {
-//        guard let userID = FirebaseAuthService.manager.currentUser?.uid else {return}
+        //        guard let userID = FirebaseAuthService.manager.currentUser?.uid else {return}
         var updateFields = [String:Any]()
         if let status = newStatus {
             updateFields["soldStatus"] = status
@@ -186,7 +163,7 @@ class FirestoreService {
         }
     }
     
-    //MARK: Just Testing For Filtering Posts
+
     func getPosts(tags: [String], completion: @escaping (Result<[ArtObject], Error>) -> ()) {
         database.collection(FirestoreCollections.ArtObject.rawValue).whereField("tags", isEqualTo: tags).getDocuments { (snapshot, error) in
             if let error = error {
@@ -203,7 +180,7 @@ class FirestoreService {
         
     }
     
-//    MARK: - Favorites Methods
+    //    MARK: - Favorites Methods
     func createFavoriteArtObject(artObject: ArtObject, completion: @ escaping (Result<(), Error>) -> ()) {
         var fields: [String:Any] = artObject.fieldsDict
         fields["dateCreated"] = Date()
@@ -215,7 +192,8 @@ class FirestoreService {
             completion(.success(()))
         }
     }
-//    MARK: TODO - ADD METHOD TO GET FAVORITES FOR THIS USER
+
+    
     func getAllSavedArtObjects(completion: @escaping (Result<[ArtObject], Error>) -> ()) {
         database.collectionGroup(FirestoreCollections.FavoriteArt.rawValue).getDocuments { (snapshot, error) in
             if let error = error {
@@ -230,7 +208,6 @@ class FirestoreService {
             }
         }
     }
-//    MARK: - TODO: Update to check only for current user.
     
     func removeSavedArtObject(artID: String, completion: @escaping (Result <(), Error>) -> ()) {
         

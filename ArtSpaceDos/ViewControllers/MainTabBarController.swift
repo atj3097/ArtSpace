@@ -12,13 +12,13 @@ import UIKit
 class MainTabBarController: UITabBarController {
   
   //MARK: Properties
-  lazy var homePage = UINavigationController(rootViewController: MainViewController())
+  lazy var homePage = UINavigationController(rootViewController: HomePageViewController())
   lazy var profile = UINavigationController(rootViewController: ProfileViewController())
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.tabBar.unselectedItemTintColor = .secondarySystemFill
+    self.tabBar.unselectedItemTintColor = .systemGray
     self.tabBar.tintColor = .white
     self.tabBar.backgroundColor = ArtSpaceConstants.artSpaceBlue
     tabBar.barTintColor = ArtSpaceConstants.artSpaceBlue

@@ -130,15 +130,9 @@ extension SavedArtViewController: UICollectionViewDataSource {
     let savedArtObjects = artObjectData[indexPath.row]
     let url = URL(string: savedArtObjects.artImageURL)
     cell.savedImageView.kf.setImage(with: url)
-    
     cell.artistNameLabel.text = "Artist: \(savedArtObjects.artistName)"
     cell.titleLabel.text = " "
-    
-//    let price = savedArtObjects.price
-//    let formattedPrice = String(format: "$ %.2f", price)
-//    cell.priceLabel.text = formattedPrice
-//    cell.updateSoldStatus(status: savedArtObjects.soldStatus)
-    
+    cell.priceLabel.text = "$\(savedArtObjects.price)0"
     cell.delegate = self
     cell.tag = indexPath.row
     return cell
