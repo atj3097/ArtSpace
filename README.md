@@ -23,7 +23,7 @@ Coming soon...
 ## Project Status
 Active 
 ## Stripe Backend 
-[Build in Node.Js using Firebase Cloud Functions](https://github.com/atj3097/ArtSpaceBackend)
+[Built in Node.Js using Firebase Cloud Functions](https://github.com/atj3097/ArtSpaceBackend)
 ## Instructions On Installation
 * Git Clone 
 * Pod install In Terminal
