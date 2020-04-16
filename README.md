@@ -25,6 +25,7 @@ ArtSpace is an immersive app where users can browse art available for sale and e
 * Git Clone 
 * Pod install In Terminal(All CocoPods are already in the PodFile) 
 * [Download Our Firebase Plist](https://mega.nz/file/YRwFTCyA) 
+Decryption Key - H6J72Q32XT2Dv__c_NNdIvHJ8uitIinWOY95-dSXDyM
 * Right Click Add Files on the Project Folder While Xcode is open to add the file
 * Build and Run app 
 * Checkout and purchase some great art!
