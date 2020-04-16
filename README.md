@@ -17,12 +17,6 @@ ArtSpace is an immersive app where users can browse art available for sale and e
 - Stripe
 - UIKit
 - Firebase 
-
-## Screenshots
-Coming soon...
-
-## Project Status
-Active 
 ## Stripe Backend 
 [Built in Node.Js using Firebase Cloud Functions](https://github.com/atj3097/ArtSpaceBackend)
 ## Instructions On Installation
