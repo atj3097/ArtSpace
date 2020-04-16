@@ -7,11 +7,11 @@ ArtSpace is an immersive app where users can browse art available for sale and e
 - Art Appreciator: Art Appreciators can use this app to find high-quality art outside of what is availble through mass-market retailers or expensive galleries and art dealers. They can preview the art in their home, and if they like it, set up an in-app purchase.
 
 ## Features
-#### Augemented reatlity shopping experience. 
+# Augemented reatlity shopping experience. 
 ![](aumentedReality.gif)
-#### In-app pruchases Using Stripe
+# In-app pruchases Using Stripe
 ![](paymentgIF.gif) 
-#### Save Your Card Information  
+# Save Your Card Information  
 ![](saveCard.gif)
 ## Technology Stack
 - ARKit
