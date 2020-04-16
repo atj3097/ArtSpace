@@ -11,7 +11,7 @@ ArtSpace is an immersive app where users can browse art available for sale and e
 # Post Your Own Art 
 ![](uploadArt.gif) 
 # Save Art To Purchase Later 
-![](savedArt.gif)
+![](savedArtGif.gif)
 ## Technology Stack
 - ARKit
 - Stripe
