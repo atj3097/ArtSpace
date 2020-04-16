@@ -23,6 +23,8 @@ ArtSpace is an immersive app where users can browse art available for sale and e
 [Built in Node.Js using Firebase Cloud Functions](https://github.com/atj3097/ArtSpaceBackend)
 ## Instructions On Installation
 * Git Clone 
-* Pod install In Terminal(All CocoPods are already in the PodFile)
+* Pod install In Terminal(All CocoPods are already in the PodFile) 
+* [Download Our Firebase Plist](https://mega.nz/file/YRwFTCyA) 
+* Right Click Add Files on the Project Folder While Xcode is open to add the file
 * Build and Run app 
-* Checkout some great art!
+* Checkout and purchase some great art!
