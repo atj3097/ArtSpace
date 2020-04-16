@@ -2,7 +2,7 @@
 ArtSpace is an immersive app where users can browse art available for sale and even preview on their walls. Independent artists can post their art and make it available for sale. Shoppers can view art and use an innovative augmented-reality feature to see how it would look in their home.
 
 ## Features
-# Augemented reatlity shopping experience. 
+# Augemented reality shopping experience. 
 ![](aumentedReality.gif)
 # In-app purchases Using Stripe
 ![](paymentGif.gif) 
