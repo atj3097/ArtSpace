@@ -1,4 +1,6 @@
-# ArtSpace
+# ArtSpace 
+
+### Introduction
 ArtSpace is an immersive app where users can browse art available for sale and even preview on their walls. Independent artists can post their art and make it available for sale. Shoppers can view art and use an innovative augmented-reality feature to see how it would look in their home.
 
 ## Features
@@ -21,6 +23,6 @@ ArtSpace is an immersive app where users can browse art available for sale and e
 [Built in Node.Js using Firebase Cloud Functions](https://github.com/atj3097/ArtSpaceBackend)
 ## Instructions On Installation
 * Git Clone 
-* Pod install In Terminal
+* Pod install In Terminal(All CocoPods are already in the PodFile)
 * Build and Run app 
 * Checkout some great art!
