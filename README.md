@@ -31,7 +31,7 @@ ArtSpace is an immersive app where users can browse art available for sale and e
 * Pod install In Terminal(All CocoPods are already in the PodFile)  
 * Open ArtSpaceDos.xcworkspace  
 * Delete the EXISTING GoogleService-Info.plist in the project(Screenshot Below 👇🏾) 
-![](Screenshot.jpg)
+![](Tutorial.jpg)
 * [Download Our Firebase Plist](https://mega.nz/file/YRwFTCyA) 
 * Decryption Key - H6J72Q32XT2Dv__c_NNdIvHJ8uitIinWOY95-dSXDyM 
 * Now, right click 'Add Files' on the project folder while xcode is open and add the GoogleService-Info.plist that you downloaded to your computer.
