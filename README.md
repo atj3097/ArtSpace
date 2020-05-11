@@ -37,5 +37,5 @@ ArtSpace is an immersive app where users can browse art available for sale and e
 * Lastly, right click 'Add Files' on the project folder while XCode is open and add the GoogleService-Info.plist that you downloaded to your computer.  
 
 ![](Instructions.gif)
-* Build and Run app 
-* Checkout and purchase some great art!
+* Build and Run the app! The first build will take a minute or two but I promise its worth it!
+* Login and enjoy the app!
